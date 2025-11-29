@@ -1,0 +1,342 @@
+<!--
+YELLADASI ARTIST - Single-file website (Style A: Modern Red/Black)
+
+How to use:
+1) Download this file as index.html into a folder named `yelladasi-artist`.
+2) Put your images into `images/` inside that folder and update image src paths.
+3) Replace placeholders: PHONE_NUMBER, CITY_NAME, EMAILJS_USER_ID, EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID.
+4) To test contact form you can sign up at https://www.emailjs.com/ (free) and get the IDs.
+5) To publish to GitHub Pages:
+   - Create a new GitHub repo (e.g., `yelladasi-artist`)
+   - Push this folder to the repo
+   - In repo Settings → Pages → set branch `main` and folder `/ (root)` → Save
+   - Your site will be live at `https://<username>.github.io/<repo-name>/`
+
+Files included (single-file version):
+- index.html  (this file)
+- images/     (create and add your photos: hero.jpg, sample1.jpg ...)
+
+Quick edits you should do immediately:
+- Update <title> and meta description
+- Replace phone number in header and contact section
+- Replace images in /images
+- Configure EmailJS details in the contact script
+
+-->
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Yelladasi Artist — Flex Printing & Painting</title>
+  <meta name="description" content="Yelladasi Artist — Flex Printing, Vinyl, Star Flex, Cloth Banners & Painting Services. High quality prints and professional painting." />
+  <style>
+    /* RESET */
+    *{box-sizing:border-box;margin:0;padding:0;font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial}
+    html,body{height:100%}
+    a{text-decoration:none;color:inherit}
+    img{max-width:100%;height:auto;display:block}
+
+    /* THEME COLORS */
+    :root{
+      --bg:#0b0b0b; /* black background */
+      --card:#111111;
+      --accent:#d62828; /* strong red */
+      --muted:#999;
+      --text:#ffffff;
+      --maxwidth:1100px;
+    }
+
+    body{background:var(--bg);color:var(--text);line-height:1.45}
+
+    /* CONTAINER */
+    .wrap{max-width:var(--maxwidth);margin:0 auto;padding:24px}
+
+    /* HEADER */
+    header{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:54px;height:54px;border-radius:6px;background:linear-gradient(135deg,var(--accent),#8b0000);display:flex;align-items:center;justify-content:center;font-weight:700}
+    .brand h1{font-size:18px;letter-spacing:0.3px}
+    .brand p{font-size:12px;color:var(--muted);margin-top:2px}
+
+    nav{display:flex;gap:18px;align-items:center}
+    .nav a{padding:8px 10px;border-radius:6px;color:var(--text)}
+    .cta{background:var(--accent);color:#fff;padding:10px 14px;border-radius:6px;font-weight:600}
+    .phone{font-weight:600;color:var(--accent)}
+
+    /* HERO */
+    .hero{display:flex;gap:20px;align-items:stretch;margin:20px 0}
+    .hero-left{flex:1;display:flex;align-items:center}
+    .hero-strip{width:78%;background:linear-gradient(180deg,rgba(0,0,0,.35),rgba(0,0,0,.5));padding:48px;border-radius:10px;position:relative;overflow:hidden}
+
+    .hero h2{font-size:36px;line-height:1.02;margin-bottom:8px}
+    .hero p.lead{color:var(--muted);margin-bottom:18px}
+    .btn-row{display:flex;gap:12px}
+    .btn{background:transparent;border:2px solid var(--accent);color:var(--text);padding:12px 18px;border-radius:8px;font-weight:700}
+    .btn.primary{background:var(--accent);border-color:var(--accent)}
+
+    /* vertical red bar */
+    .side-bar{width:80px;background:var(--accent);display:flex;align-items:center;justify-content:center;border-radius:8px}
+    .side-bar span{writing-mode:vertical-rl;transform:rotate(180deg);font-weight:700;letter-spacing:3px;color:#fff}
+
+    /* HERO IMAGE */
+    .hero-image{width:40%;border-radius:10px;overflow:hidden}
+    .hero-image img{height:100%;object-fit:cover}
+
+    /* SERVICES */
+    section{padding:40px 0}
+    .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .service{background:var(--card);padding:18px;border-radius:10px}
+    .service h4{margin-bottom:8px}
+    .service p{color:var(--muted);font-size:14px}
+
+    /* GALLERY */
+    .gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+    .gallery-grid img{width:100%;height:130px;object-fit:cover;border-radius:6px}
+
+    /* ABOUT */
+    .about{display:flex;gap:18px;align-items:center}
+    .about img{width:44%;border-radius:8px}
+
+    /* CONTACT */
+    .contact-grid{display:grid;grid-template-columns:1fr 360px;gap:18px}
+    .contact-card{background:var(--card);padding:18px;border-radius:10px}
+    .contact-card h3{margin-bottom:8px}
+    .meta{color:var(--muted);margin-bottom:12px}
+
+    input,textarea{width:100%;padding:10px;border-radius:6px;border:1px solid #222;background:#0b0b0b;color:var(--text)}
+    textarea{min-height:120px}
+    .submit{background:var(--accent);color:#fff;border:none;padding:12px 14px;border-radius:8px;font-weight:700}
+
+    /* FOOTER */
+    footer{padding:28px 0;border-top:1px solid #1a1a1a;margin-top:28px;color:var(--muted)}
+
+    /* RESPONSIVE */
+    @media (max-width:900px){
+      .services-grid{grid-template-columns:repeat(2,1fr)}
+      .gallery-grid{grid-template-columns:repeat(2,1fr)}
+      .hero{flex-direction:column}
+      .hero-image{width:100%}
+      .hero-strip{width:100%}
+      .contact-grid{grid-template-columns:1fr}
+      .side-bar{display:none}
+    }
+    @media (max-width:520px){
+      .services-grid{grid-template-columns:1fr}
+      .gallery-grid{grid-template-columns:1fr}
+      .brand h1{font-size:16px}
+      .hero h2{font-size:22px}
+    }
+
+    /* NAV DROPDOWN */
+    .dropdown{position:relative}
+    .dropdown:hover .dropdown-menu{display:block}
+    .dropdown-menu{display:none;position:absolute;top:40px;left:0;background:#0f0f0f;border-radius:8px;min-width:220px;padding:8px;box-shadow:0 8px 20px rgba(0,0,0,.6)}
+    .dropdown-menu a{display:block;padding:8px;border-radius:6px;color:var(--text);font-size:14px}
+    .dropdown-menu a:hover{background:#111}
+
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo">YA</div>
+        <div>
+          <h1>Yelladasi Artist</h1>
+          <p>Flex Printing • Painting • Sign Boards</p>
+        </div>
+      </div>
+
+      <nav>
+        <div class="dropdown">
+          <a href="#services">Our Services ▾</a>
+          <div class="dropdown-menu">
+            <a href="#flex">Flex Printing</a>
+            <a href="#vinyl">Vinyl Printing</a>
+            <a href="#star">Star Flex</a>
+            <a href="#cloth">Cloth Banners</a>
+            <a href="#painting">Painting</a>
+            <a href="#ads">Advertisement Flex</a>
+          </div>
+        </div>
+        <a href="#gallery">Gallery</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+        <a class="cta" href="#contact">Get a Quote</a>
+      </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="side-bar"><span>OFFLINE SERVICES</span></div>
+      <div class="hero-left">
+        <div class="hero-strip">
+          <p style="color:var(--muted);font-weight:700;letter-spacing:2px">EVERY BANNER • EVERY BOARD</p>
+          <h2>Yelladasi Artist<br/><small style="color:var(--muted);font-size:16px">Flex Printing • Vinyl • Star Flex • Painting</small></h2>
+          <p class="lead">We design, print, and paint high-impact visuals for shops, events, and brand promotions. Durable materials, vivid colors, and fast delivery.</p>
+
+          <div class="btn-row">
+            <a class="btn primary" href="#contact">Get Quote</a>
+            <a class="btn" href="#gallery">Our Works</a>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="hero-image">
+        <img src="images/hero.jpg" alt="Flex printing and painting"/>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services">
+      <div class="wrap">
+        <h3 style="margin-bottom:12px">Our Services</h3>
+        <div class="services-grid">
+          <div class="service" id="flex">
+            <h4>Flex Printing</h4>
+            <p>High-resolution flex banners for shops, events, and promotions. Weather-resistant and vibrant prints.</p>
+          </div>
+          <div class="service" id="vinyl">
+            <h4>Vinyl Printing</h4>
+            <p>Vinyl stickers, window graphics, vehicle wraps and custom branding solutions for indoor & outdoor use.</p>
+          </div>
+          <div class="service" id="star">
+            <h4>Star Flex Printing</h4>
+            <p>Premium star flex for long-lasting outdoor signage with superior color retention and visibility.</p>
+          </div>
+          <div class="service" id="cloth">
+            <h4>Cloth Banners</h4>
+            <p>Traditional cloth banners for events and ceremonies—lightweight, durable, and easy to hang.</p>
+          </div>
+          <div class="service" id="painting">
+            <h4>Painting Services</h4>
+            <p>Interior & exterior painting for homes, shops and commercial spaces. Professional finish and color consultation.</p>
+          </div>
+          <div class="service" id="ads">
+            <h4>Advertisement Flex</h4>
+            <p>Promotional banners for advertising campaigns, sales, political banners and outdoor hoardings.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section id="gallery">
+      <div class="wrap">
+        <h3 style="margin-bottom:12px">Our Work Gallery</h3>
+        <div class="gallery-grid">
+          <img src="images/sample1.jpg" alt="gallery1" />
+          <img src="images/sample2.jpg" alt="gallery2" />
+          <img src="images/sample3.jpg" alt="gallery3" />
+          <img src="images/sample4.jpg" alt="gallery4" />
+          <img src="images/sample5.jpg" alt="gallery5" />
+          <img src="images/sample6.jpg" alt="gallery6" />
+          <img src="images/sample7.jpg" alt="gallery7" />
+          <img src="images/sample8.jpg" alt="gallery8" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="wrap about">
+        <img src="images/team.jpg" alt="our team"/>
+        <div>
+          <h3>About Yelladasi Artist</h3>
+          <p style="color:var(--muted)">Yelladasi Artist combines traditional craft with modern printing technology. We help businesses and individuals create bold visual identities—flex banners, signboards, and professional painting services. Our work focuses on quality materials, fast turnaround, and clear communication.</p>
+          <p style="margin-top:12px;color:var(--muted)"><strong>Our promise:</strong> Quality, Durability, and On-time delivery.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="wrap">
+        <h3>Contact Us</h3>
+        <div class="contact-grid">
+          <div class="contact-card">
+            <h3>Get a Quote / Enquiry</h3>
+            <p class="meta">Call or WhatsApp us — fast replies for quotes and custom requirements.</p>
+            <p><strong>Phone:</strong> <span class="phone">+91 PHONE_NUMBER</span></p>
+            <p><strong>Location:</strong> <span> CITY_NAME, Karnataka</span></p>
+            <p style="margin-top:12px;color:var(--muted)">Working Hours: Mon–Sun 9:00 AM – 9:00 PM</p>
+
+            <div style="margin-top:14px;display:flex;gap:10px">
+              <a class="btn primary" href="tel:+91PHONE_NUMBER">Call Now</a>
+              <a class="btn" href="https://wa.me/91PHONE_NUMBER">WhatsApp Us</a>
+            </div>
+          </div>
+
+          <div>
+            <div class="contact-card">
+              <h3>Send us a message</h3>
+              <form id="contact-form">
+                <label>Name</label>
+                <input type="text" name="user_name" required />
+                <label style="margin-top:8px">Phone</label>
+                <input type="tel" name="user_phone" required />
+                <label style="margin-top:8px">Email</label>
+                <input type="email" name="user_email" />
+                <label style="margin-top:8px">Message</label>
+                <textarea name="message" required></textarea>
+                <div style="margin-top:10px"><button class="submit" type="submit">Send Message</button></div>
+                <p id="form-msg" style="margin-top:10px;color:var(--muted)"></p>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="wrap" style="display:flex;justify-content:space-between;align-items:center">
+        <div>
+          <strong>Yelladasi Artist</strong>
+          <div style="color:var(--muted);font-size:13px;margin-top:6px">Flex Printing • Sign Boards • Painting Services</div>
+        </div>
+        <div style="color:var(--muted);font-size:13px">© <span id="year"></span> Yelladasi Artist</div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Set copyright year
+    document.getElementById('year').innerText = new Date().getFullYear();
+
+    // Simple gallery lazy load (if images set)
+    document.addEventListener('DOMContentLoaded', function(){
+      document.querySelectorAll('.gallery-grid img').forEach(img => {
+        img.loading = 'lazy';
+      })
+    })
+
+    // Contact form using EmailJS (configure your own ids)
+    // Sign up at https://www.emailjs.com/ and obtain the user ID, service ID, and template ID
+    (function(){
+      // If you want to use EmailJS, uncomment and set YOUR IDs
+      // emailjs.init('EMAILJS_USER_ID');
+      const form = document.getElementById('contact-form');
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
+        const msg = document.getElementById('form-msg');
+        msg.innerText = 'Sending...';
+
+        // If EmailJS configured:
+        // emailjs.sendForm('YOUR_SERVICE_ID','YOUR_TEMPLATE_ID', this)
+        // .then(function(){ msg.innerText = 'Message sent — thank you!'; form.reset(); }, function(err){ msg.innerText = 'Failed to send. Please call or WhatsApp.' });
+
+        // Fallback: Create a mailto link (opens user's email client)
+        const name = form.user_name.value.trim();
+        const phone = form.user_phone.value.trim();
+        const email = form.user_email.value.trim();
+        const message = form.message.value.trim();
+        const body = encodeURIComponent(`Name: ${name}\nPhone: ${phone}\nEmail: ${email}\n\nMessage:\n${message}`);
+        window.location.href = `mailto:your-email@example.com?subject=Yelladasi%20Artist%20Enquiry&body=${body}`;
+      })
+    })();
+  </script>
+</body>
+</html>
