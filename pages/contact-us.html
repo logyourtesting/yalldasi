@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Contact Us — YallaDasi Ads</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="icon" href="../images/logo.png">
+</head>
+<body>
+  <div class="container">
+
+    <header>
+      <div class="brand slide-left">
+        <div class="logo"><img src="../images/logo.png" alt="Logo"></div>
+        <div><strong>YallaDasi Ads</strong><br><span style="font-size:13px;color:var(--muted)">Flex • Vinayl • Hoardings • Painting</span></div>
+      </div>
+
+      <nav>
+        <a class="navlink" href="../index.html">Home</a>
+        <a class="navlink" href="../pages/get-quote.html">Get Quote</a>
+        <a class="navlink" href="../pages/contact-us.html">Contact</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="hero-left card">
+        <h1>Contact Us</h1>
+        <p class="lead">Drop by our shop or reach out — we're happy to help with prints, hoardings, and painting projects.</p>
+
+        <h3 style="margin-top:14px">Address</h3>
+        <p>130, Near Old Siddeshwar Temple,<br>Sakhar Peth, Solapur - 413005,<br>Maharashtra</p>
+
+        <h3 style="margin-top:12px">Office Numbers</h3>
+        <div style="line-height:1.6;">
+          <div><strong>Office 1:</strong> <a href="tel:+919890333466">+91 9890333466</a></div>
+          <div><strong>Office 2:</strong> <a href="tel:+919028751598">+91 9028751598</a></div>
+          <div><strong>Office 3 (Main):</strong> <a href="tel:+919595507038">+91 9595507038</a></div>
+        </div>
+
+        <h3 style="margin-top:12px">Email</h3>
+        <p><a href="mailto:your-email@example.com">your-email@example.com</a></p>
+
+        <h3 style="margin-top:12px">Working Hours</h3>
+        <p>Mon–Sun: 9:00 AM – 9:00 PM</p>
+      </div>
+
+      <div class="hero-image">
+        <!-- Embedded Google Map for the address -->
+        <iframe
+          width="100%" height="320" style="border:0;border-radius:12px"
+          loading="lazy" allowfullscreen
+          referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=130,+Near+Old+Siddeshwar+Temple,+Sakhar+Peth,+Solapur+413005&output=embed">
+        </iframe>
+      </div>
+    </section>
+
+    <section style="margin-top:18px">
+      <h3>Send us a quick message</h3>
+      <form id="contact-only">
+        <label>Name</label><input name="name" required>
+        <label>Phone</label><input name="phone" type="tel" required>
+        <label>Message</label><textarea name="message" required></textarea>
+        <button class="submit" type="submit">Send Message</button>
+      </form>
+    </section>
+
+    <footer style="margin-top:26px">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <div><strong>YallaDasi Ads</strong></div>
+        <div style="color:var(--muted)">© <span id="yr"></span></div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- floating -->
+  <a class="whatsapp-float" href="https://wa.me/919595507038" target="_blank" rel="noopener"><img src="../images/whatsapp-icon.png" width="32" alt="WhatsApp"></a>
+  <a class="call-float" href="tel:+919595507038">📞</a>
+
+<script>
+  document.getElementById('yr').innerText = new Date().getFullYear();
+
+  // contact-only sends mailto fallback
+  document.getElementById('contact-only').addEventListener('submit', function(e){
+    e.preventDefault();
+    const name = this.name.value.trim();
+    const phone = this.phone.value.trim();
+    const message = this.message.value.trim();
+    const body = encodeURIComponent(`Name: ${name}\nPhone: ${phone}\n\n${message}`);
+    window.location.href = `mailto:your-email@example.com?subject=Contact%20from%20Website&body=${body}`;
+  });
+
+  // header & dropdown
+  window.addEventListener('scroll', ()=> document.querySelector('header').classList.toggle('scrolled', window.scrollY>20) );
+  document.querySelectorAll('.dropdown-toggle').forEach(btn=>btn.addEventListener('click', e=>{e.preventDefault();e.stopPropagation();btn.parentElement.classList.toggle('open');}));
+  document.addEventListener('click', ()=>document.querySelectorAll('.dropdown').forEach(d=>d.classList.remove('open')));
+</script>
+</body>
+</html>

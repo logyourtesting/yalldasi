@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Get Quote — YallaDasi Ads</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="icon" href="../images/logo.png">
+</head>
+<body>
+  <div class="container">
+
+    <header>
+      <div class="brand slide-left">
+        <div class="logo"><img src="../images/logo.png" alt="Logo"></div>
+        <div><strong>YallaDasi Ads</strong><br>
+          <span style="font-size:13px;color:var(--muted)">Flex • Vinyl • Hoardings • Painting</span>
+        </div>
+      </div>
+
+      <nav>
+        <a class="navlink" href="../index.html">Home</a>
+        <a class="navlink" href="get-quote.html">Get Quote</a>
+        <a class="navlink" href="contact-us.html">Contact</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="hero-left card">
+        <h1>Request a Quote</h1>
+        <p class="lead">Fill in your details — choose WhatsApp or Email to send your request.</p>
+
+        <form id="quote-form">
+          <label>Name</label>
+          <input name="name" required>
+
+          <label>Phone</label>
+          <input name="phone" type="tel" required>
+
+          <label>Email (optional)</label>
+          <input name="email" type="email">
+
+          <label>Service</label>
+          <select name="service" required>
+            <option value="Flex Printing">Flex Printing</option>
+            <option value="Vinyl Printing">Vinyl Printing</option>
+            <option value="Star Flex Hoardings">Star Flex Hoardings</option>
+            <option value="Cloth Banners">Cloth Banners</option>
+            <option value="Shop Sign Boards">Shop Sign Boards</option>
+            <option value="Painting Services">Painting Services</option>
+            <option value="Outdoor Hoarding">Outdoor Hoarding</option>
+          </select>
+
+          <label>Size (Width × Height)</label>
+          <input name="size" placeholder="e.g. 6ft × 4ft">
+
+          <label>Material</label>
+          <select name="material">
+            <option value="Flex">Flex</option>
+            <option value="Vinyl">Vinyl</option>
+            <option value="Star Flex">Star Flex</option>
+            <option value="Cloth">Cloth</option>
+          </select>
+
+          <label>Quantity</label>
+          <input name="quantity" type="number" min="1" value="1">
+
+          <label>Delivery Location</label>
+          <input name="location" placeholder="City / Address">
+
+          <label>Upload Artwork (optional)</label>
+          <input id="file-input" type="file" accept=".png,.jpg,.jpeg,.pdf">
+
+          <label>Notes</label>
+          <textarea name="notes"></textarea>
+
+          <div style="margin-top:16px;display:flex;gap:12px;flex-wrap:wrap">
+            <button id="send-whatsapp" type="button" class="btn">Send via WhatsApp</button>
+            <button id="send-email" type="button" class="btn primary">Send via Email</button>
+          </div>
+
+          <p id="quote-status" class="meta" style="margin-top:10px;"></p>
+        </form>
+      </div>
+
+      <div class="hero-image">
+        <img src="../images/hero.jpg" alt="Quote Image">
+      </div>
+    </section>
+
+    <footer style="margin-top:18px">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <div><strong>YallaDasi Ads</strong></div>
+        <div style="color:var(--muted)">© <span id="yr"></span></div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- WHATSAPP FLOAT -->
+  <a class="whatsapp-float" href="https://wa.me/919595507038" target="_blank" rel="noopener">
+    <img src="../images/whatsapp-icon.png" width="32" alt="">
+  </a>
+
+  <!-- CALL FLOAT -->
+  <a class="call-float" href="tel:+919595507038">📞</a>
+
+<script>
+document.getElementById('yr').innerText = new Date().getFullYear();
+
+// Collect form data
+function formData() {
+  const f = document.getElementById('quote-form');
+  return {
+    name: f.name.value.trim(),
+    phone: f.phone.value.trim(),
+    email: f.email.value.trim(),
+    service: f.service.value,
+    size: f.size.value.trim(),
+    material: f.material.value,
+    quantity: f.quantity.value,
+    location: f.location.value.trim(),
+    notes: f.notes.value.trim()
+  };
+}
+
+// Send via WhatsApp
+document.getElementById('send-whatsapp').addEventListener('click', () => {
+  const d = formData();
+  const status = document.getElementById('quote-status');
+
+  if (!d.name || !d.phone) {
+    status.textContent = "Name & Phone required.";
+    return;
+  }
+
+  const msg =
+`Quote Request
+Name: ${d.name}
+Phone: ${d.phone}
+Email: ${d.email}
+Service: ${d.service}
+Size: ${d.size}
+Material: ${d.material}
+Quantity: ${d.quantity}
+Location: ${d.location}
+Notes: ${d.notes}`;
+
+  const url = `https://wa.me/919595507038?text=${encodeURIComponent(msg)}`;
+  window.open(url, "_blank");
+
+  status.textContent = "WhatsApp opened — attach artwork manually if required.";
+});
+
+// Send via Email (mailto fallback)
+document.getElementById('send-email').addEventListener('click', async () => {
+  const d = formData();
+  const status = document.getElementById('quote-status');
+
+  const body =
+`Name: ${d.name}
+Phone: ${d.phone}
+Email: ${d.email}
+Service: ${d.service}
+Size: ${d.size}
+Material: ${d.material}
+Quantity: ${d.quantity}
+Location: ${d.location}
+
+Notes:
+${d.notes}`;
+
+  const mailto = `mailto:your-email@example.com?subject=Quote Request&body=${encodeURIComponent(body)}`;
+
+  const file = document.getElementById('file-input').files[0];
+
+  if (file) {
+    if (!confirm("Your selected file cannot be attached automatically.\nPlease attach it manually in your email.\nContinue?")) {
+      status.textContent = "Email cancelled. Use WhatsApp or attach manually.";
+      return;
+    }
+  }
+
+  window.location.href = mailto;
+});
+
+// Sticky header
+window.addEventListener('scroll', () =>
+  document.querySelector('header').classList.toggle('scrolled', window.scrollY > 20)
+);
+
+// Dropdown fix
+document.querySelectorAll('.dropdown-toggle').forEach(btn =>
+  btn.addEventListener('click', e => {
+    e.preventDefault(); e.stopPropagation();
+    btn.parentElement.classList.toggle('open');
+  })
+);
+document.addEventListener('click', () =>
+  document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('open'))
+);
+</script>
+
+</body>
+</html>
