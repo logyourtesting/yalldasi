@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>About Us – YallaDasi Ads</title>
+
+  <link rel="icon" href="../images/logo.png">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>html { scroll-behavior: smooth; }</style>
+</head>
+
+<body>
+<div class="container">
+
+  <!-- HEADER -->
+  <header>
+    <div class="brand slide-left">
+      <div class="logo"><img src="../images/logo.png" alt="Logo"></div>
+      <div>
+        <strong style="font-size:16px">YallaDasi Ads — Printing & Signs</strong><br>
+        <span style="font-size:13px;color:var(--muted)">Flex • Vinayl • Hoardings • Painting</span>
+      </div>
+    </div>
+
+    <nav>
+      <a class="navlink" href="../index.html">Home</a>
+      <a class="navlink" href="about-us.html" style="font-weight:700;color:var(--accent)">About-Us</a>
+
+      <div class="dropdown">
+        <a class="navlink dropdown-toggle" href="javascript:void(0)">Services ▾</a>
+        <div class="dropdown-menu">
+          <a href="flex.html">Flex Printing</a>
+          <a href="vinayl.html">Vinayl Printing</a>
+          <a href="starflex.html">Star Flex Hoardings</a>
+          <a href="cloth.html">Cloth Banners</a>
+          <a href="signs.html">Shop Sign Boards</a>
+          <a href="painting.html">Painting Services</a>
+          <a href="outdoor-hoarding.html">Outdoor Hoarding Services</a>
+        </div>
+      </div>
+
+      <a class="navlink" href="contact-us.html">Contact</a>
+      <a class="cta" href="get-quote.html">Get Quote</a>
+    </nav>
+  </header>
+
+  <!-- ABOUT HERO -->
+  <section style="margin-top:20px">
+    <div class="card fade-in">
+      <h1>About YallaDasi Ads</h1>
+      <p class="lead" style="margin-top:6px">
+        We are a professional flex printing, signage and branding company delivering high-quality solutions for businesses, events and outdoor advertising.
+      </p>
+    </div>
+  </section>
+
+  <!-- TWO COLUMN CONTENT -->
+  <section style="margin-top:22px">
+    <div class="two-col">
+
+      <!-- LEFT -->
+      <div class="card slide-left">
+        <h2>Who We Are</h2>
+        <p style="margin-top:10px;color:var(--muted);line-height:1.6">
+          YallaDasi Ads is a full-service printing and signage agency offering
+          flex printing, vinyl graphics, hoardings, shop boards and painting.
+          With years of experience and modern equipment, we produce strong,
+          durable and visually striking branding materials.
+        </p>
+
+        <h3 style="margin-top:20px">Our Strengths</h3>
+        <ul style="margin-top:8px;color:var(--muted);line-height:1.6;padding-left:16px">
+          <li>High-quality prints with vibrant colors</li>
+          <li>Fast turnaround for urgent branding needs</li>
+          <li>Professional installation services</li>
+          <li>Custom designs for every business type</li>
+          <li>Affordable pricing without quality compromise</li>
+        </ul>
+      </div>
+
+      <!-- RIGHT IMAGE OR CARD -->
+      <div class="card zoom-in">
+        <img src="../images/team.jpg" alt="Our Team" style="width:100%;border-radius:10px">
+      </div>
+    </div>
+  </section>
+
+  <!-- OUR MISSION SECTION -->
+  <section style="margin-top:24px">
+    <div class="card fade-in">
+      <h2>Our Mission</h2>
+      <p style="margin-top:10px;color:var(--muted);line-height:1.6">
+        ⭐ ABOUT US – 75 Years Legacy Version
+
+Yalldasi Ads is a family-run business with a proud history of 75 years, originally established in 1951 by our father. What began as a small workshop for hand-painting and signboard creation has grown into one of the most trusted names in printing and visual branding in Solapur.
+
+Today, at 60 years of age, we continue this legacy through a strong partnership, combining traditional craftsmanship with the latest printing technology. Our journey from hand-painted boards to modern flex, vinyl, and hoarding printing reflects our commitment to quality and evolution.
+
+We now offer a complete range of services:
+
+Flex & Vinyl Printing
+
+Hoardings & Outdoor Advertising
+
+Cloth Banners
+
+Event & Shop Branding
+
+Professional Painting Services
+
+
+With 75 years of experience, our mission remains the same as our father’s:
+
+Deliver quality work, build trust, and create designs that leave a lasting impact.
+
+We are proud to carry forward a legacy built on honesty, craftsmanship, and customer satisfaction — since 1951.
+
+      </p>
+    </div>
+  </section>
+
+  <!-- OUR VALUES -->
+  <section style="margin-top:24px">
+    <div class="card slide-right">
+      <h2>Our Values</h2>
+      <ul style="margin-top:10px;color:var(--muted);line-height:1.6;padding-left:16px">
+        <li>Quality first</li>
+        <li>Honest pricing</li>
+        <li>Transparent communication</li>
+        <li>Long-term customer relationships</li>
+        <li>Innovation and continuous improvement</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap">
+      <div><strong>YallaDasi Ads</strong><br><span style="color:var(--muted)">Flex • Vinayl • Hoardings • Painting</span></div>
+      <div style="color:var(--muted)">© <span id="yr"></span> YallaDasi Ads</div>
+    </div>
+  </footer>
+
+</div>
+
+<!-- FLOATING BUTTONS -->
+<a class="whatsapp-float" href="https://wa.me/919595507038" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <img src="../images/whatsapp-icon.png" width="32" alt="WhatsApp">
+</a>
+
+<a class="call-float" href="tel:+919595507038" aria-label="Call us">📞</a>
+
+<script>
+  document.getElementById('yr').innerText = new Date().getFullYear();
+
+  // Sticky header on scroll
+  window.addEventListener('scroll', ()=> 
+    document.querySelector('header').classList.toggle('scrolled', window.scrollY>20)
+  );
+
+  // Dropdown
+  document.querySelectorAll('.dropdown-toggle').forEach(btn=>{
+    btn.addEventListener('click', e=>{
+      e.preventDefault();
+      e.stopPropagation();
+      btn.parentElement.classList.toggle('open');
+    });
+  });
+  document.addEventListener('click', ()=> 
+    document.querySelectorAll('.dropdown').forEach(d=>d.classList.remove('open'))
+  );
+
+  // Reveal animations
+  const els = document.querySelectorAll('.fade-in, .zoom-in, .slide-left, .slide-right');
+  const obs = new IntersectionObserver(entries =>
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('show'); }),
+  {threshold:0.2});
+  els.forEach(el=>obs.observe(el));
+</script>
+
+</body>
+</html>
