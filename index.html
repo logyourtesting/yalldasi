@@ -38,38 +38,47 @@
         </div>
 
         <a class="navlink" href="pages/contact-us.html">Contact</a>
-         <a class="navlink" href="pages/about-us.html"><About-Us>About-Us</About-Us></a>
+         <a class="navlink" href="pages/about-us.html"><About-Us>About Us</About-Us></a>
         <!--<a class="navlink" href="pages/get-quote.html">Get Quote</a>-->
         <a class="cta" href="pages/get-quote.html">Get Quote</a>
       </nav>
     </header>
 
     <!-- HERO -->
-    <section class="hero">
-      <div class="hero-left card">
-        <div class="kicker">Business Installation</div>
-        <h1>High-impact Flex, Vinayl & Hoarding Services</h1>
-        <p class="lead">
-          Shopfront banners, vehicle wraps, event backdrops and professional painting.
-          Fast quotes and reliable installation.
-        </p>
+ <section class="hero hero-carousel">
 
-        <div class="hero-cta">
-          <a class="btn primary" href="pages/get-quote.html">Get a Quote</a>
-          <a class="btn" href="https://wa.me/919595507038" target="_blank" rel="noopener">WhatsApp</a>
-        </div>
+  <div class="hero-slide active" style="background-image:url('images/hero-1.jpg')">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="kicker">Offline Advertising</div>
+      <h1>Elevate Brand Experience</h1>
+      <p>High-impact flex, hoardings and outdoor advertising solutions.</p>
+      <a class="btn primary" href="pages/get-quote.html">Get a Quote</a>
+    </div>
+  </div>
 
-        <div style="margin-top:18px;font-size:14px">
-          <span class="phone-pill" style="color:var(--text);font-weight:700">Office 1: +91 9890333466</span>
-          <span style="margin-left:12px;color:var(--muted)">Office 2: +91 9028751598</span>
-          <span style="margin-left:12px;color:var(--muted);font-weight:700">Office 3 (Main): +91 9595507038</span>
-        </div>
-      </div>
+  <div class="hero-slide" style="background-image:url('images/hero-2.jpg')">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="kicker">Every Surface</div>
+      <h1>Every Surface. Every Scroll.</h1>
+      <p>From shop boards to digital presence — we cover everything.</p>
+      <a class="btn primary" href="pages/about-us.html">Know More</a>
+    </div>
+  </div>
 
-      <div class="hero-image">
-        <img src="images/hero.jpg" alt="hero">
-      </div>
-    </section>
+  <div class="hero-slide" style="background-image:url('images/hero-3.jpg')">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="kicker">360° Solutions</div>
+      <h1>Print • Hoardings • Painting</h1>
+      <p>Complete branding, printing and installation services.</p>
+      <a class="btn primary" href="pages/contact-us.html">Contact Us</a>
+    </div>
+  </div>
+
+</section>
+
 
     <!-- SERVICES (kept short) -->
     <section id="services">
@@ -125,5 +134,20 @@
     const obs = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('show'); }), {threshold:0.2});
     els.forEach(el=>obs.observe(el));
   </script>
+
+
+<script>
+window.addEventListener('load',()=>{
+  const slides=document.querySelectorAll('.hero-slide');
+  let i=0;
+
+  setInterval(()=>{
+    slides[i].classList.remove('active');
+    i=(i+1)%slides.length;
+    slides[i].classList.add('active');
+  },4500);
+});
+</script>
+
 </body>
 </html>
