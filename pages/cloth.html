@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Cloth Banners – YallaDasi Ads</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="icon" href="../images/logo.png">
+</head>
+<body>
+<div class="container">
+<header>
+  <div class="brand slide-left"><div class="logo"><img src="../images/logo.png" alt=""></div><div><strong>YallaDasi Ads</strong></div></div>
+  <nav>
+    <a class="navlink" href="../index.html">Home</a>
+    <div class="dropdown"><a class="navlink dropdown-toggle" href="javascript:void(0)">Services ▾</a>
+      <div class="dropdown-menu">
+        <a href="flex.html">Flex Printing</a>
+        <a href="vinayl.html">Vinayl Printing</a>
+        <a href="starflex.html">Star Flex Hoardings</a>
+        <a href="cloth.html">Cloth Banners</a>
+        <a href="signs.html">Shop Sign Boards</a>
+        <a href="painting.html">Painting Services</a>
+        <a href="outdoor-hoarding.html">Outdoor Hoarding Services</a>
+      </div>
+    </div>
+    <a class="navlink" href="../index.html#work">Work</a>
+    <a class="cta" href="../index.html#contact">Get Quote</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-left card fade-in"><h1>Cloth Banner Printing</h1><p class="lead">Lightweight, traditional cloth banners for ceremonies, events and cultural functions.</p></div>
+  <div class="hero-image zoom-in"><img src="../images/hero.jpg" alt=""></div>
+</section>
+
+<section><h2 class="fade-in">Why Cloth Banners?</h2><ul class="fade-in" style="margin-top:10px;line-height:1.6"><li>Budget-friendly</li><li>Easy to transport</li><li>Classic appearance</li></ul></section>
+
+<section>
+  <h2 class="fade-in">Contact</h2>
+  <div><div><strong>Office 1:</strong> <a href="tel:+919890333466">+91 9890333466</a></div><div><strong>Office 2:</strong> <a href="tel:+919028751598">+91 9028751598</a></div><div><strong>Office 3 (Main):</strong> <a href="tel:+919595507038">+91 9595507038</a></div></div>
+  <div style="margin-top:12px;display:flex;gap:12px"><a class="btn primary" href="../index.html#contact">Get Quote</a><a class="btn" href="tel:+919595507038">Call</a><a class="btn" href="https://wa.me/919595507038" target="_blank" rel="noopener">WhatsApp</a></div>
+</section>
+
+<footer class="fade-in"><div style="display:flex;justify-content:space-between"><div><strong>YallaDasi Ads</strong></div><div style="color:var(--muted)">© <span id="yr"></span></div></div></footer>
+</div>
+
+<a class="whatsapp-float" href="https://wa.me/919595507038" target="_blank" rel="noopener"><img src="../images/whatsapp-icon.png" width="32" alt=""></a>
+<a class="call-float" href="tel:+919595507038">📞</a>
+
+<script>document.getElementById('yr').innerText=new Date().getFullYear();window.addEventListener('scroll',()=>document.querySelector('header').classList.toggle('scrolled',window.scrollY>20));document.querySelectorAll('.dropdown-toggle').forEach(btn=>btn.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();btn.parentElement.classList.toggle('open');}));document.addEventListener('click',()=>document.querySelectorAll('.dropdown').forEach(d=>d.classList.remove('open')));const es=document.querySelectorAll('.fade-in,.zoom-in,.slide-left,.slide-right');const ob=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show');});},{threshold:0.2});es.forEach(el=>ob.observe(el));</script>
+</body>
+</html>
