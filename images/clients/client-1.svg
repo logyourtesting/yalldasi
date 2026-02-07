@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="240" height="120" viewBox="0 0 240 120">
+  <rect width="240" height="120" rx="16" fill="#fff3e6"/>
+  <circle cx="48" cy="60" r="22" fill="#ff6a2c"/>
+  <text x="48" y="67" text-anchor="middle" font-size="16" font-family="Arial" fill="#fff">SS</text>
+  <text x="92" y="66" font-size="18" font-family="Arial" fill="#2b2d42">Solapur SuperMart</text>
+</svg>
