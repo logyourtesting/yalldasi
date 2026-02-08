@@ -597,6 +597,57 @@ nav{display:flex;gap:10px;align-items:center;flex-wrap:wrap;justify-content:flex
 }
 .gallery-grid .item{border-radius:12px;overflow:hidden;box-shadow:0 10px 20px rgba(0,0,0,0.08)}
 
+/* FILTER GALLERY */
+.filter-bar{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-bottom:14px;
+}
+.filter-btn{
+  padding:8px 14px;
+  border-radius:999px;
+  border:1px solid rgba(0,0,0,0.1);
+  background:#fff;
+  font-weight:600;
+  cursor:pointer;
+}
+.filter-btn.active{
+  background:var(--accent);
+  color:#fff;
+  border-color:transparent;
+}
+.filter-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+}
+.filter-item{
+  border-radius:12px;
+  overflow:hidden;
+  box-shadow:0 10px 20px rgba(0,0,0,0.08);
+}
+
+/* VIDEO GRID */
+.video-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+}
+.video-card{
+  background:#fff;
+  border-radius:14px;
+  overflow:hidden;
+  box-shadow:var(--shadow);
+}
+.video-thumb{
+  display:block;
+  background:#f3e9dd;
+  height:200px;
+}
+.video-card h4{padding:12px 14px 0}
+.video-card p{padding:0 14px 14px;color:var(--muted)}
+
 /* SLIDER */
 .auto-slider{
   position:relative;
@@ -772,6 +823,8 @@ footer{
   .trust-stats{grid-template-columns:repeat(3,1fr)}
   .services{grid-template-columns:repeat(2,1fr)}
   .gallery-grid{grid-template-columns:repeat(3,1fr)}
+  .filter-grid{grid-template-columns:repeat(3,1fr)}
+  .video-grid{grid-template-columns:1fr}
   .steps{grid-template-columns:1fr}
   .footer-grid{grid-template-columns:1fr 1fr}
   .cta-banner{flex-direction:column;align-items:flex-start}
@@ -793,6 +846,7 @@ footer{
   .section-head{flex-direction:column;align-items:flex-start}
   .services{grid-template-columns:1fr}
   .gallery-grid{grid-template-columns:repeat(2,1fr)}
+  .filter-grid{grid-template-columns:repeat(2,1fr)}
   .two-col{grid-template-columns:1fr}
   .trust-stats{grid-template-columns:1fr}
   .footer-grid{grid-template-columns:1fr}
@@ -800,6 +854,7 @@ footer{
   .lead-form{grid-template-columns:1fr}
   .stats-grid{grid-template-columns:1fr}
   .ba-wrap img{height:320px}
+  .video-thumb{height:160px}
 }
 
 @media (prefers-reduced-motion: reduce){
