@@ -880,6 +880,38 @@ footer{
   justify-content:center;
   z-index:999999;
 }
+.wa-widget{
+  position:fixed;
+  bottom:150px;
+  right:20px;
+  width:220px;
+  background:#fff;
+  border-radius:14px;
+  box-shadow:0 12px 30px rgba(0,0,0,0.15);
+  overflow:hidden;
+  z-index:999998;
+}
+.wa-widget-toggle{
+  width:100%;
+  border:none;
+  background:var(--accent-2);
+  color:#fff;
+  padding:10px 12px;
+  font-weight:700;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.wa-widget-dot{
+  width:8px;height:8px;border-radius:50%;background:#22c55e;display:inline-block;
+}
+.wa-widget-body{
+  display:none;
+  padding:12px;
+}
+.wa-widget.open .wa-widget-body{display:block}
+.wa-widget-title{font-weight:700;margin-bottom:4px}
+.wa-widget-text{font-size:13px;color:var(--muted);margin-bottom:10px}
 
 /* RESPONSIVE */
 @media (max-width: 1024px){
