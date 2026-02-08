@@ -1,25 +1,26 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Manrope:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Open+Sans:wght@400;600&display=swap');
 
 /* RESET & BASE */
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%}
 body{
-  font-family:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif;
-  background:#f3f0ea;
+  font-family:"Open Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  background:var(--bg);
   color:var(--text);
 }
 a{color:inherit;text-decoration:none}
 img{max-width:100%;display:block}
 img{user-select:none;-webkit-user-drag:none}
+h1,h2,h3,h4,.brand-title{font-family:"Poppins",system-ui,-apple-system,"Segoe UI",sans-serif}
 
 /* COLOR THEME */
 :root{
-  --accent:#b23a2a;
-  --accent-2:#d4b98c;
-  --text:#1e1b16;
-  --muted:#6a625a;
-  --card:#ffffff;
-  --bg:#f7f3ee;
+  --accent:#f5a623;
+  --accent-2:#0b1f3a;
+  --text:#0f1115;
+  --muted:#525866;
+  --card:#fff;
+  --bg:#f6f3ee;
   --radius:18px;
   --shadow:0 18px 50px rgba(30,27,22,0.12);
 }
@@ -27,9 +28,9 @@ img{user-select:none;-webkit-user-drag:none}
 /* BACKGROUND & WRAPPER */
 body{
   background:
-    radial-gradient(circle at 10% 10%, rgba(178,58,42,0.12), transparent 45%),
-    radial-gradient(circle at 90% 20%, rgba(212,185,140,0.22), transparent 45%),
-    linear-gradient(180deg, #f7f3ee 0%, #f1ece6 100%);
+    radial-gradient(circle at 10% 10%, rgba(11,31,58,0.12), transparent 45%),
+    radial-gradient(circle at 90% 20%, rgba(245,166,35,0.18), transparent 45%),
+    linear-gradient(180deg, #f6f3ee 0%, #efe9e2 100%);
 }
 body::before{
   content:"";
@@ -274,7 +275,7 @@ nav{display:flex;gap:10px;align-items:center;flex-wrap:wrap;justify-content:flex
   box-shadow:var(--shadow);
 }
 .hero-left h1{
-  font-family:"Playfair Display", serif;
+  font-family:"Poppins", sans-serif;
   font-size:52px;
   letter-spacing:0.2px;
   margin:12px 0 10px;
@@ -325,7 +326,7 @@ nav{display:flex;gap:10px;align-items:center;flex-wrap:wrap;justify-content:flex
   color:#fff;
 }
 .hero-slide-content h1{
-  font-family:"Playfair Display", serif;
+  font-family:"Poppins", sans-serif;
   font-size:52px;
   letter-spacing:0.2px;
 }
