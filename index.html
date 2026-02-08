@@ -31,33 +31,6 @@
     "url": "http://localhost:8000/",
     "email": "yalla.dasi.artist@gmail.com"
   }
-  
-    const waWidget = document.getElementById('wa-widget');
-    if (waWidget) {
-      const toggle = waWidget.querySelector('.wa-widget-toggle');
-      toggle.addEventListener('click', () => {
-        const open = waWidget.classList.toggle('open');
-        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-      });
-    }
-
-  
-    // theme toggle
-    const themeToggle = document.getElementById('theme-toggle');
-    const setTheme = (mode) => {
-      document.documentElement.setAttribute('data-theme', mode);
-      localStorage.setItem('theme', mode);
-      if (themeToggle) themeToggle.textContent = mode === 'dark' ? 'Light' : 'Dark';
-    };
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) setTheme(savedTheme);
-    if (themeToggle) {
-      themeToggle.addEventListener('click', () => {
-        const current = document.documentElement.getAttribute('data-theme') || 'light';
-        setTheme(current === 'dark' ? 'light' : 'dark');
-      });
-    }
-
   </script>
   <link rel="icon" href="images/logo.png">
   <link rel="stylesheet" href="css/style.css">
@@ -680,6 +653,32 @@
         window.location.href = `mailto:yalla.dasi.artist@gmail.com?subject=Quick Lead&body=${encodeURIComponent(body)}`;
       });
     }
+  
+    const waWidget = document.getElementById('wa-widget');
+    if (waWidget) {
+      const toggle = waWidget.querySelector('.wa-widget-toggle');
+      toggle.addEventListener('click', () => {
+        const open = waWidget.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+    }
+
+    // theme toggle
+    const themeToggle = document.getElementById('theme-toggle');
+    const setTheme = (mode) => {
+      document.documentElement.setAttribute('data-theme', mode);
+      localStorage.setItem('theme', mode);
+      if (themeToggle) themeToggle.textContent = mode === 'dark' ? 'Light' : 'Dark';
+    };
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) setTheme(savedTheme);
+    if (themeToggle) {
+      themeToggle.addEventListener('click', () => {
+        const current = document.documentElement.getAttribute('data-theme') || 'light';
+        setTheme(current === 'dark' ? 'light' : 'dark');
+      });
+    }
+
   </script>
 </body>
 </html>
