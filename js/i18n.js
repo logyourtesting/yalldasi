@@ -142,10 +142,10 @@
       about_mission_body: "Deliver dependable outdoor advertising that helps local businesses grow with clear timelines and durable quality.",
       about_vision_h: "Our Vision",
       about_vision_body: "To be the most trusted outdoor advertising partner in Solapur for impactful campaigns and clean execution.",
-      about_owner_title: "Owner",
+      about_owner_title: "Owners",
       about_owner_sub: "The leadership behind Yalla-Dasi Ads.",
-      about_owner_name: "Owner Name",
-      about_owner_role: "Founder & Managing Director",
+      about_owner_name: "Shriniwas Vishwanath Yalla & Nagnath Sidram Dasi",
+      about_owner_role: "Founders",
       about_owner_bio: "Short bio goes here. Replace with your owner details, experience, and business vision."
     },
     hi: {
@@ -292,8 +292,8 @@
       about_vision_body: "सोलापुर में सबसे भरोसेमंद आउटडोअर विज्ञापन पार्टनर बनना।",
       about_owner_title: "मालिक",
       about_owner_sub: "Yalla-Dasi Ads के पीछे नेतृत्व।",
-      about_owner_name: "मालिक का नाम",
-      about_owner_role: "संस्थापक एवं प्रबंध निदेशक",
+      about_owner_name: "Shriniwas Vishwanath Yalla & Nagnath Sidram Dasi",
+      about_owner_role: "संस्थापक",
       about_owner_bio: "यहाँ छोटा परिचय लिखें।"
     },
     mr: {
@@ -440,8 +440,8 @@
       about_vision_body: "सोलापूरमध्ये सर्वाधिक विश्वासार्ह आउटडोअर जाहिरात पार्टनर बनणे.",
       about_owner_title: "मालक",
       about_owner_sub: "Yalla-Dasi Ads मागील नेतृत्व.",
-      about_owner_name: "मालकाचे नाव",
-      about_owner_role: "संस्थापक व व्यवस्थापकीय संचालक",
+      about_owner_name: "Shriniwas Vishwanath Yalla & Nagnath Sidram Dasi",
+      about_owner_role: "संस्थापक",
       about_owner_bio: "येथे लहान परिचय लिहा."
     },
     te: {
@@ -586,10 +586,10 @@
       about_mission_body: "స్థానిక వ్యాపారాలను బలమైన అవుట్‌డోర్ అడ్వర్టైజింగ్‌తో పెంపొందించడం.",
       about_vision_h: "మా విజన్",
       about_vision_body: "సొలాపూర్లో అత్యంత విశ్వసనీయ అవుట్‌డోర్ అడ్వర్టైజింగ్ భాగస్వామిగా మారడం.",
-      about_owner_title: "యజమాని",
+      about_owner_title: "యజమానులు",
       about_owner_sub: "Yalla-Dasi Ads వెనుక నాయకత్వం.",
-      about_owner_name: "యజమాని పేరు",
-      about_owner_role: "స్థాపకుడు & మేనేజింగ్ డైరెక్టర్",
+      about_owner_name: "Shriniwas Vishwanath Yalla & Nagnath Sidram Dasi",
+      about_owner_role: "స్థాపకులు",
       about_owner_bio: "ఇక్కడ చిన్న పరిచయం రాయండి."
     }
   };
