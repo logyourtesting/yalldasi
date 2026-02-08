@@ -19,11 +19,12 @@
           <option value="mr">मराठी</option>
           <option value="te">తెలుగు</option>
         </select>
+      <button id="theme-toggle" class="theme-toggle" type="button">Dark</button>
     </div>
 
     <header>
       <div class="brand slide-left">
-        <div class="logo"><img src="../images/logo.png" alt="Yalla-Dasi Ads logo"></div>
+        <div class="logo"><img loading="lazy" decoding="async" src="../images/logo.png" alt="Yalla-Dasi Ads logo"></div>
         <div>
           <strong class="brand-title">Yalla-Dasi Ads</strong><br>
           <span class="brand-sub">Outdoor Advertising • Flex • Vinyl • Painting</span>
@@ -91,7 +92,7 @@
         </div>
       </div>
       <div class="hero-image">
-        <img src="../images/hero.jpg" alt="Yalla-Dasi Ads team at work">
+        <img loading="lazy" decoding="async" src="../images/hero.jpg" alt="Yalla-Dasi Ads team at work">
       </div>
     </section>
 
@@ -214,7 +215,7 @@
       </div>
       <div class="two-col">
         <div class="hero-image">
-          <img src="../images/dummy/slide-10.svg" alt="Owner photo placeholder">
+          <img loading="lazy" decoding="async" src="../images/dummy/slide-10.svg" alt="Owner photo placeholder">
         </div>
         <div class="card">
           <h3 data-i18n="about_owner_name">Shriniwas Vishwanath Yalla & Nagnath Sidram Dasi</h3>
@@ -322,6 +323,23 @@
       toggle.addEventListener('click', () => {
         const open = waWidget.classList.toggle('open');
         toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+    }
+
+  
+    // theme toggle
+    const themeToggle = document.getElementById('theme-toggle');
+    const setTheme = (mode) => {
+      document.documentElement.setAttribute('data-theme', mode);
+      localStorage.setItem('theme', mode);
+      if (themeToggle) themeToggle.textContent = mode === 'dark' ? 'Light' : 'Dark';
+    };
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) setTheme(savedTheme);
+    if (themeToggle) {
+      themeToggle.addEventListener('click', () => {
+        const current = document.documentElement.getAttribute('data-theme') || 'light';
+        setTheme(current === 'dark' ? 'light' : 'dark');
       });
     }
 

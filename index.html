@@ -41,6 +41,23 @@
       });
     }
 
+  
+    // theme toggle
+    const themeToggle = document.getElementById('theme-toggle');
+    const setTheme = (mode) => {
+      document.documentElement.setAttribute('data-theme', mode);
+      localStorage.setItem('theme', mode);
+      if (themeToggle) themeToggle.textContent = mode === 'dark' ? 'Light' : 'Dark';
+    };
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) setTheme(savedTheme);
+    if (themeToggle) {
+      themeToggle.addEventListener('click', () => {
+        const current = document.documentElement.getAttribute('data-theme') || 'light';
+        setTheme(current === 'dark' ? 'light' : 'dark');
+      });
+    }
+
   </script>
   <link rel="icon" href="images/logo.png">
   <link rel="stylesheet" href="css/style.css">
@@ -57,6 +74,7 @@
           <option value="mr">मराठी</option>
           <option value="te">తెలుగు</option>
         </select>
+      <button id="theme-toggle" class="theme-toggle" type="button">Dark</button>
     </div>
 
     <div class="announce-bar">
@@ -73,7 +91,7 @@
 
     <header>
       <div class="brand slide-left">
-        <div class="logo"><img src="images/logo.png" alt="Yalla-Dasi Ads logo"></div>
+        <div class="logo"><img loading="lazy" decoding="async" src="images/logo.png" alt="Yalla-Dasi Ads logo"></div>
         <div>
           <strong class="brand-title">Yalla-Dasi Ads</strong><br>
           <span class="brand-sub">Outdoor Advertising • Flex • Vinyl • Painting</span>
@@ -134,7 +152,7 @@
     <!-- HERO SLIDER -->
     <section class="auto-slider hero-slider" data-interval="3500">
       <div class="auto-slide">
-        <img src="images/dummy/slide-1.svg" alt="Outdoor advertising flex installation">
+        <img loading="lazy" decoding="async" src="images/dummy/slide-1.svg" alt="Outdoor advertising flex installation">
         <div class="hero-slide-content">
           <div class="kicker">Full-Service Advertising Studio</div>
           <h1 data-i18n="hero_title">Make your brand impossible to miss.</h1>
@@ -153,7 +171,7 @@
         </div>
       </div>
       <div class="auto-slide">
-        <img src="images/dummy/slide-1.svg" alt="Outdoor hoarding installation">
+        <img loading="lazy" decoding="async" src="images/dummy/slide-1.svg" alt="Outdoor hoarding installation">
         <div class="hero-slide-content">
           <div class="kicker">Outdoor Hoardings</div>
           <h1>High-impact outdoor campaigns.</h1>
@@ -165,7 +183,7 @@
         </div>
       </div>
       <div class="auto-slide">
-        <img src="images/dummy/slide-6.svg" alt="Shop sign board">
+        <img loading="lazy" decoding="async" src="images/dummy/slide-6.svg" alt="Shop sign board">
         <div class="hero-slide-content">
           <div class="kicker">LED Sign Boards</div>
           <h1>Bright, visible storefronts.</h1>
@@ -177,7 +195,7 @@
         </div>
       </div>
       <div class="auto-slide">
-        <img src="images/dummy/slide-3.svg" alt="Vinyl branding">
+        <img loading="lazy" decoding="async" src="images/dummy/slide-3.svg" alt="Vinyl branding">
         <div class="hero-slide-content">
           <div class="kicker">Vinyl & Flex Printing</div>
           <h1>Durable branding that lasts.</h1>
@@ -252,9 +270,9 @@
         <p>See the difference professional outdoor branding makes.</p>
       </div>
       <div class="ba-wrap" id="ba-wrap">
-        <img src="images/dummy/slide-9.svg" alt="After branding">
+        <img loading="lazy" decoding="async" src="images/dummy/slide-9.svg" alt="After branding">
         <div class="ba-before" id="ba-before">
-          <img src="images/dummy/slide-10.svg" alt="Before branding">
+          <img loading="lazy" decoding="async" src="images/dummy/slide-10.svg" alt="Before branding">
         </div>
         <div class="ba-handle" id="ba-handle"></div>
         <div class="ba-label">Before</div>
@@ -362,22 +380,22 @@
       </div>
       <div class="client-slider">
         <div class="client-track">
-          <div class="client-card"><img src="images/clients/client-1.svg" alt="Solapur SuperMart logo"></div>
-          <div class="client-card"><img src="images/clients/client-2.svg" alt="City Care Clinic logo"></div>
-          <div class="client-card"><img src="images/clients/client-3.svg" alt="Prime Motors logo"></div>
-          <div class="client-card"><img src="images/clients/client-4.svg" alt="Galaxy Furnishings logo"></div>
-          <div class="client-card"><img src="images/clients/client-5.svg" alt="Royal Bakers logo"></div>
-          <div class="client-card"><img src="images/clients/client-6.svg" alt="Metro Electronics logo"></div>
-          <div class="client-card"><img src="images/clients/client-7.svg" alt="BlueSky Events logo"></div>
-          <div class="client-card"><img src="images/clients/client-8.svg" alt="Sunrise Developers logo"></div>
-          <div class="client-card"><img src="images/clients/client-1.svg" alt="Solapur SuperMart logo"></div>
-          <div class="client-card"><img src="images/clients/client-2.svg" alt="City Care Clinic logo"></div>
-          <div class="client-card"><img src="images/clients/client-3.svg" alt="Prime Motors logo"></div>
-          <div class="client-card"><img src="images/clients/client-4.svg" alt="Galaxy Furnishings logo"></div>
-          <div class="client-card"><img src="images/clients/client-5.svg" alt="Royal Bakers logo"></div>
-          <div class="client-card"><img src="images/clients/client-6.svg" alt="Metro Electronics logo"></div>
-          <div class="client-card"><img src="images/clients/client-7.svg" alt="BlueSky Events logo"></div>
-          <div class="client-card"><img src="images/clients/client-8.svg" alt="Sunrise Developers logo"></div>
+          <div class="client-card"><img loading="lazy" decoding="async" src="images/clients/client-1.svg" alt="Solapur SuperMart logo"></div>
+          <div class="client-card"><img loading="lazy" decoding="async" src="images/clients/client-2.svg" alt="City Care Clinic logo"></div>
+          <div class="client-card"><img loading="lazy" decoding="async" src="images/clients/client-3.svg" alt="Prime Motors logo"></div>
+          <div class="client-card"><img loading="lazy" decoding="async" src="images/clients/client-4.svg" alt="Galaxy Furnishings logo"></div>
+          <div class="client-card"><img loading="lazy" decoding="async" src="images/clients/client-5.svg" alt="Royal Bakers logo"></div>
+          <div class="client-card"><img loading="lazy" decoding="async" src="images/clients/client-6.svg" alt="Metro Electronics logo"></div>
+          <div class="client-card"><img loading="lazy" decoding="async" src="images/clients/client-7.svg" alt="BlueSky Events logo"></div>
+          <div class="client-card"><img loading="lazy" decoding="async" src="images/clients/client-8.svg" alt="Sunrise Developers logo"></div>
+          <div class="client-card"><img loading="lazy" decoding="async" src="images/clients/client-1.svg" alt="Solapur SuperMart logo"></div>
+          <div class="client-card"><img loading="lazy" decoding="async" src="images/clients/client-2.svg" alt="City Care Clinic logo"></div>
+          <div class="client-card"><img loading="lazy" decoding="async" src="images/clients/client-3.svg" alt="Prime Motors logo"></div>
+          <div class="client-card"><img loading="lazy" decoding="async" src="images/clients/client-4.svg" alt="Galaxy Furnishings logo"></div>
+          <div class="client-card"><img loading="lazy" decoding="async" src="images/clients/client-5.svg" alt="Royal Bakers logo"></div>
+          <div class="client-card"><img loading="lazy" decoding="async" src="images/clients/client-6.svg" alt="Metro Electronics logo"></div>
+          <div class="client-card"><img loading="lazy" decoding="async" src="images/clients/client-7.svg" alt="BlueSky Events logo"></div>
+          <div class="client-card"><img loading="lazy" decoding="async" src="images/clients/client-8.svg" alt="Sunrise Developers logo"></div>
         </div>
       </div>
     </section>
@@ -413,14 +431,14 @@
         <p>Recent installations and print projects delivered by our team.</p>
       </div>
       <div class="gallery-grid">
-        <div class="item"><img src="images/dummy/slide-9.svg" alt="Outdoor hoarding installation"></div>
-        <div class="item"><img src="images/dummy/slide-10.svg" alt="Shopfront flex banner"></div>
-        <div class="item"><img src="images/dummy/slide-11.svg" alt="Event banner design"></div>
-        <div class="item"><img src="images/dummy/slide-12.svg" alt="Vinyl wrap project"></div>
-        <div class="item"><img src="images/dummy/slide-9.svg" alt="Outdoor signage"></div>
-        <div class="item"><img src="images/dummy/slide-10.svg" alt="Retail sign board"></div>
-        <div class="item"><img src="images/dummy/slide-11.svg" alt="Large format print"></div>
-        <div class="item"><img src="images/dummy/slide-12.svg" alt="Branding installation"></div>
+        <div class="item"><img loading="lazy" decoding="async" src="images/dummy/slide-9.svg" alt="Outdoor hoarding installation"></div>
+        <div class="item"><img loading="lazy" decoding="async" src="images/dummy/slide-10.svg" alt="Shopfront flex banner"></div>
+        <div class="item"><img loading="lazy" decoding="async" src="images/dummy/slide-11.svg" alt="Event banner design"></div>
+        <div class="item"><img loading="lazy" decoding="async" src="images/dummy/slide-12.svg" alt="Vinyl wrap project"></div>
+        <div class="item"><img loading="lazy" decoding="async" src="images/dummy/slide-9.svg" alt="Outdoor signage"></div>
+        <div class="item"><img loading="lazy" decoding="async" src="images/dummy/slide-10.svg" alt="Retail sign board"></div>
+        <div class="item"><img loading="lazy" decoding="async" src="images/dummy/slide-11.svg" alt="Large format print"></div>
+        <div class="item"><img loading="lazy" decoding="async" src="images/dummy/slide-12.svg" alt="Branding installation"></div>
       </div>
     </section>
 

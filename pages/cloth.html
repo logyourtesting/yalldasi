@@ -19,11 +19,12 @@
           <option value="mr">मराठी</option>
           <option value="te">తెలుగు</option>
         </select>
+      <button id="theme-toggle" class="theme-toggle" type="button">Dark</button>
     </div>
 
     <header>
       <div class="brand slide-left">
-        <div class="logo"><img src="../images/logo.png" alt="Yalla-Dasi Ads logo"></div>
+        <div class="logo"><img loading="lazy" decoding="async" src="../images/logo.png" alt="Yalla-Dasi Ads logo"></div>
         <div>
           <strong class="brand-title">Yalla-Dasi Ads</strong><br>
           <span class="brand-sub">Outdoor Advertising • Flex • Vinyl • Painting</span>
@@ -91,7 +92,7 @@
         </div>
       </div>
       <div class="hero-image zoom-in">
-        <img src="../images/hero.jpg" alt="Cloth banner printing">
+        <img loading="lazy" decoding="async" src="../images/hero.jpg" alt="Cloth banner printing">
       </div>
     </section>
 
@@ -297,10 +298,10 @@
         <p>Fabric banners created for events and exhibitions.</p>
       </div>
       <div class="auto-slider" data-interval="3000">
-        <div class="auto-slide"><img src="../images/dummy/slide-2.svg" alt="Cloth banner display"></div>
-        <div class="auto-slide"><img src="../images/dummy/slide-3.svg" alt="Event cloth banner"></div>
-        <div class="auto-slide"><img src="../images/dummy/slide-5.svg" alt="Indoor fabric print"></div>
-        <div class="auto-slide"><img src="../images/dummy/slide-8.svg" alt="Cloth branding"></div>
+        <div class="auto-slide"><img loading="lazy" decoding="async" src="../images/dummy/slide-2.svg" alt="Cloth banner display"></div>
+        <div class="auto-slide"><img loading="lazy" decoding="async" src="../images/dummy/slide-3.svg" alt="Event cloth banner"></div>
+        <div class="auto-slide"><img loading="lazy" decoding="async" src="../images/dummy/slide-5.svg" alt="Indoor fabric print"></div>
+        <div class="auto-slide"><img loading="lazy" decoding="async" src="../images/dummy/slide-8.svg" alt="Cloth branding"></div>
         <div class="slider-dots"></div>
       </div>
     </section>
@@ -494,6 +495,23 @@ Quantity: ${d.quantity}
 Message: ${d.message}
 Artwork/Photo: Please attach in WhatsApp.`;
         window.open(`https://wa.me/${waNumber}?text=${encodeURIComponent(msg)}`, '_blank');
+      });
+    }
+
+  
+    // theme toggle
+    const themeToggle = document.getElementById('theme-toggle');
+    const setTheme = (mode) => {
+      document.documentElement.setAttribute('data-theme', mode);
+      localStorage.setItem('theme', mode);
+      if (themeToggle) themeToggle.textContent = mode === 'dark' ? 'Light' : 'Dark';
+    };
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) setTheme(savedTheme);
+    if (themeToggle) {
+      themeToggle.addEventListener('click', () => {
+        const current = document.documentElement.getAttribute('data-theme') || 'light';
+        setTheme(current === 'dark' ? 'light' : 'dark');
       });
     }
 
