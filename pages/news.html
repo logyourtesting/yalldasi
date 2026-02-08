@@ -131,11 +131,13 @@
     // WhatsApp CTA prefill
     const waNumber = '919595507038';
     const pageTitle = document.title.replace('— Yalla-Dasi Ads','').trim();
-    const waDefaultMessage = `Hello Yalla-Dasi Ads,\nI'm interested in ${pageTitle || 'your services'}.\nPlease share details and pricing.`;
+    const waDefaultMessage = `Hello Yalla-Dasi Ads,\nI'm interested in ${pageTitle || 'your services'}.\nPlease share details and pricing.
+If you have artwork/photos, please attach them here in WhatsApp.`;
     document.querySelectorAll('.whatsapp-float, .wa-cta').forEach(link=>{
       const service = link.dataset.service ? ` ${link.dataset.service}` : '';
       const msg = link.dataset.service
-        ? `Hello Yalla-Dasi Ads,\nI'm interested in${service}.\nPlease share details and pricing.`
+        ? `Hello Yalla-Dasi Ads,\nI'm interested in${service}.\nPlease share details and pricing.
+If you have artwork/photos, please attach them here in WhatsApp.`
         : waDefaultMessage;
       link.setAttribute('href', `https://wa.me/${waNumber}?text=${encodeURIComponent(msg)}`);
     });

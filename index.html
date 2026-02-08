@@ -270,6 +270,7 @@
             <div>✅ Experienced installation team</div>
             <div>✅ Flexible sizing and custom materials</div>
           </div>
+          <a class="btn secondary" href="assets/Yalla-Dasi-Brochure.pdf" style="margin-top:14px" download>Download Brochure (PDF)</a>
         </div>
       </div>
     </section>
@@ -285,22 +286,58 @@
 
     <section class="section">
       <div class="section-head">
+        <h2>FAQ</h2>
+        <p>Quick answers to common questions before you start.</p>
+      </div>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>What details should I share to get a quote?</summary>
+          <p>Send size, quantity, location, and preferred material. If you have artwork, attach it on WhatsApp.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Do you provide installation?</summary>
+          <p>Yes. Our team handles measurements, printing, and professional installation.</p>
+        </details>
+        <details class="faq-item">
+          <summary>How fast can you deliver?</summary>
+          <p>Most jobs are completed within 24–72 hours depending on size and approval.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Can you help with design?</summary>
+          <p>Yes. We can create or refine artwork and share a proof before printing.</p>
+        </details>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
         <h2 data-i18n="section_testimonials">Testimonials</h2>
         <p>What business owners say about Yalla-Dasi Ads.</p>
       </div>
-      <div class="testimonials">
-        <div class="testimonial">
-          <p>“Fast work and clean installation. Our storefront visibility improved instantly.”</p>
-          <strong>— Rahul K., Retail Owner</strong>
+      <div class="auto-slider testimonial-slider" data-interval="4200">
+        <div class="auto-slide">
+          <div class="testimonial-card">
+            <p>“Fast work and clean installation. Our storefront visibility improved instantly.”</p>
+            <strong>— Rahul K., Retail Owner</strong>
+          </div>
         </div>
-        <div class="testimonial">
-          <p>“Professional team with quick turnaround. Great color quality on the flex banners.”</p>
-          <strong>— Sana M., Event Manager</strong>
+        <div class="auto-slide">
+          <div class="testimonial-card">
+            <p>“Professional team with quick turnaround. Great color quality on the flex banners.”</p>
+            <strong>— Sana M., Event Manager</strong>
+          </div>
         </div>
-        <div class="testimonial">
-          <p>“Reliable service and clear pricing. The hoarding project was delivered on time.”</p>
-          <strong>— Ajay S., Builder</strong>
+        <div class="auto-slide">
+          <div class="testimonial-card">
+            <p>“Reliable service and clear delivery. The hoarding project was completed on time.”</p>
+            <strong>— Ajay S., Builder</strong>
+          </div>
         </div>
+        <div class="slider-dots"></div>
+      </div>
+      <div class="review-actions">
+        <a class="btn secondary" href="#" aria-disabled="true">Google Reviews (Link Soon)</a>
+        <span class="meta">We will activate this after verification.</span>
       </div>
     </section>
 
@@ -502,11 +539,11 @@
     // WhatsApp CTA prefill
     const waNumber = '919595507038';
     const pageTitle = document.title.replace('— Yalla-Dasi Ads','').trim();
-    const waDefaultMessage = `Hello Yalla-Dasi Ads,%0AI'm interested in ${pageTitle || 'your services'}.%0APlease share details and pricing.`;
+    const waDefaultMessage = `Hello Yalla-Dasi Ads,%0AI'm interested in ${pageTitle || 'your services'}.%0APlease share details and pricing.%0AIf you have artwork/photos, please attach them here in WhatsApp.`;
     document.querySelectorAll('.whatsapp-float, .wa-cta').forEach(link=>{
       const service = link.dataset.service ? ` ${link.dataset.service}` : '';
       const msg = link.dataset.service
-        ? `Hello Yalla-Dasi Ads,%0AI'm interested in${service}.%0APlease share details and pricing.`
+        ? `Hello Yalla-Dasi Ads,%0AI'm interested in${service}.%0APlease share details and pricing.%0AIf you have artwork/photos, please attach them here in WhatsApp.`
         : waDefaultMessage;
       link.setAttribute('href', `https://wa.me/${waNumber}?text=${msg}`);
     });
@@ -588,7 +625,7 @@
           return;
         }
         const msg =
-`Quick Lead\\nName: ${d.name}\\nPhone: ${d.phone}\\nService: ${d.service}\\nMessage: ${d.message}`;
+`Quick Lead\\nName: ${d.name}\\nPhone: ${d.phone}\\nService: ${d.service}\\nMessage: ${d.message}\\nArtwork/Photo: Please attach in WhatsApp.`;
         window.open(`https://wa.me/${waNumber}?text=${encodeURIComponent(msg)}`, '_blank');
         status.textContent = 'WhatsApp opened.';
       });

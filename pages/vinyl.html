@@ -161,6 +161,47 @@
       <a class="btn primary" href="../get-quote.html" data-i18n="cta_request_quote">Request Quote</a>
     </section>
 
+    <section class="section enquiry-section">
+      <div class="section-head">
+        <h2>Service Enquiry</h2>
+        <p>Share size, quantity, and location. Attach artwork on WhatsApp.</p>
+      </div>
+      <form class="service-form" data-service="Vinyl Printing">
+        <div>
+          <label>Name</label>
+          <input type="text" name="name" placeholder="Your name" required>
+        </div>
+        <div>
+          <label>Phone</label>
+          <input type="tel" name="phone" placeholder="+91" required>
+        </div>
+        <div>
+          <label>City/Location</label>
+          <input type="text" name="location" placeholder="Solapur">
+        </div>
+        <div>
+          <label>Size</label>
+          <input type="text" name="size" placeholder="e.g., 10 ft x 3 ft">
+        </div>
+        <div>
+          <label>Quantity</label>
+          <input type="number" name="quantity" placeholder="e.g., 2">
+        </div>
+        <div>
+          <label>Timeline</label>
+          <input type="text" name="timeline" placeholder="e.g., 3 days">
+        </div>
+        <div class="full">
+          <label>Message</label>
+          <textarea name="message" rows="3" placeholder="Describe your requirement"></textarea>
+        </div>
+        <div class="full form-actions">
+          <button type="button" class="btn primary enquiry-wa">Send Enquiry on WhatsApp</button>
+          <span class="meta">After WhatsApp opens, attach artwork/photo.</span>
+        </div>
+      </form>
+    </section>
+
     <footer>
       <div class="footer-grid">
         <div>
@@ -194,13 +235,15 @@
     const pageTitle = document.title.replace('— Yalla-Dasi Ads','').trim();
     const waDefaultMessage = `Hello Yalla-Dasi Ads,
 I'm interested in ${pageTitle || 'your services'}.
-Please share details and pricing.`;
+Please share details and pricing.
+If you have artwork/photos, please attach them here in WhatsApp.`;
     document.querySelectorAll('.whatsapp-float, .wa-cta').forEach(link=>{
       const service = link.dataset.service ? ` ${link.dataset.service}` : '';
       const msg = link.dataset.service
         ? `Hello Yalla-Dasi Ads,
 I'm interested in${service}.
-Please share details and pricing.`
+Please share details and pricing.
+If you have artwork/photos, please attach them here in WhatsApp.`
         : waDefaultMessage;
       link.setAttribute('href', `https://wa.me/${waNumber}?text=${encodeURIComponent(msg)}`);
     });
@@ -251,6 +294,40 @@ Please share details and pricing.`
         if (dots[i]) dots[i].classList.add('active');
       }, interval);
     });
+
+    const serviceForm = document.querySelector('.service-form');
+    if (serviceForm) {
+      const waBtn = serviceForm.querySelector('.enquiry-wa');
+      waBtn.addEventListener('click', () => {
+        const d = {
+          service: serviceForm.dataset.service || pageTitle,
+          name: serviceForm.name.value.trim(),
+          phone: serviceForm.phone.value.trim(),
+          location: serviceForm.location.value.trim(),
+          size: serviceForm.size.value.trim(),
+          quantity: serviceForm.quantity.value.trim(),
+          timeline: serviceForm.timeline.value.trim(),
+          message: serviceForm.message.value.trim()
+        };
+        if (!d.name || !d.phone) {
+          alert('Name and Phone are required.');
+          return;
+        }
+        const msg =
+`Service Enquiry
+Service: ${d.service}
+Name: ${d.name}
+Phone: ${d.phone}
+Location: ${d.location}
+Size: ${d.size}
+Quantity: ${d.quantity}
+Timeline: ${d.timeline}
+Message: ${d.message}
+Artwork/Photo: Please attach in WhatsApp.`;
+        window.open(`https://wa.me/${waNumber}?text=${encodeURIComponent(msg)}`, '_blank');
+      });
+    }
+
   </script>
 </body>
 </html>
