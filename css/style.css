@@ -506,6 +506,10 @@ nav{display:flex;gap:8px;align-items:center;flex-wrap:nowrap;justify-content:fle
 }
 .faq-item summary{cursor:pointer;font-weight:700}
 .faq-item p{margin-top:8px;color:var(--muted)}
+.compare-table-wrap{overflow-x:auto;background:#fff;border-radius:14px;box-shadow:var(--shadow)}
+.compare-table{width:100%;border-collapse:collapse;min-width:620px}
+.compare-table th,.compare-table td{padding:12px 14px;border-bottom:1px solid rgba(0,0,0,0.06);text-align:left}
+.compare-table th{background:var(--card-2);font-weight:700}
 
 .contact-row{
   margin-top:16px;
