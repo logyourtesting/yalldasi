@@ -140,6 +140,93 @@
       </div>
     </section>
 
+    <section class="section materials-section">
+      <div class="section-head">
+        <h2>Materials & Finish</h2>
+        <p>Built for durability, visibility, and clean finishing.</p>
+      </div>
+      <div class="services">
+        <div class="service">
+          <h4>Premium Materials</h4>
+          <p>We use quality substrates chosen for outdoor performance.</p>
+        </div>
+        <div class="service">
+          <h4>Color Accuracy</h4>
+          <p>Sharp printing with rich color and clean edges.</p>
+        </div>
+        <div class="service">
+          <h4>Weather Resistance</h4>
+          <p>UV, dust, and rain‑ready for long‑term visibility.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section timeline-section">
+      <div class="section-head">
+        <h2>Project Timeline</h2>
+        <p>Typical turnaround from enquiry to installation.</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <span>01</span>
+          <h4>Site Visit & Brief</h4>
+          <p>We measure, inspect, and confirm requirements.</p>
+        </div>
+        <div class="step">
+          <span>02</span>
+          <h4>Design & Approval</h4>
+          <p>Artwork proof shared for your approval.</p>
+        </div>
+        <div class="step">
+          <span>03</span>
+          <h4>Print & Install</h4>
+          <p>Production and installation completed on schedule.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section pricing-section">
+      <div class="section-head">
+        <h2>Pricing Request</h2>
+        <p>Get a quick quote without showing prices on the page.</p>
+      </div>
+      <form class="service-form pricing-form" data-service="Star Flex Hoardings">
+        <div>
+          <label>Full Name</label>
+          <input type="text" name="name" placeholder="Your name" required>
+        </div>
+        <div>
+          <label>Mobile Number</label>
+          <input type="tel" name="phone" placeholder="+91" required>
+        </div>
+        <div>
+          <label>Email Address</label>
+          <input type="email" name="email" placeholder="you@example.com">
+        </div>
+        <div>
+          <label>Location</label>
+          <input type="text" name="location" placeholder="Solapur">
+        </div>
+        <div>
+          <label>Size</label>
+          <input type="text" name="size" placeholder="e.g., 10 ft x 3 ft">
+        </div>
+        <div>
+          <label>Quantity</label>
+          <input type="number" name="quantity" placeholder="e.g., 2">
+        </div>
+        <div class="full">
+          <label>Message</label>
+          <textarea name="message" rows="3" placeholder="Tell us your requirement"></textarea>
+        </div>
+        <div class="full form-actions">
+          <button type="button" class="btn primary pricing-wa">Request Pricing on WhatsApp</button>
+          <span class="meta">We will respond with a quote. Attach artwork on WhatsApp if needed.</span>
+        </div>
+      </form>
+    </section>
+
+
     <section class="section compare-section">
       <div class="section-head">
         <h2>Service Comparison</h2>
@@ -311,6 +398,41 @@
       toggle.addEventListener('click', () => {
         const open = waWidget.classList.toggle('open');
         toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+    }
+
+  
+
+    const pricingForm = document.querySelector('.pricing-form');
+    if (pricingForm) {
+      const pricingBtn = pricingForm.querySelector('.pricing-wa');
+      pricingBtn.addEventListener('click', () => {
+        const d = {
+          service: pricingForm.dataset.service || pageTitle,
+          name: pricingForm.name.value.trim(),
+          phone: pricingForm.phone.value.trim(),
+          email: pricingForm.email.value.trim(),
+          location: pricingForm.location.value.trim(),
+          size: pricingForm.size.value.trim(),
+          quantity: pricingForm.quantity.value.trim(),
+          message: pricingForm.message.value.trim()
+        };
+        if (!d.name || !d.phone) {
+          alert('Name and Phone are required.');
+          return;
+        }
+        const msg =
+`Pricing Request
+Service: ${d.service}
+Name: ${d.name}
+Phone: ${d.phone}
+Email: ${d.email}
+Location: ${d.location}
+Size: ${d.size}
+Quantity: ${d.quantity}
+Message: ${d.message}
+Artwork/Photo: Please attach in WhatsApp.`;
+        window.open(`https://wa.me/${waNumber}?text=${encodeURIComponent(msg)}`, '_blank');
       });
     }
 
