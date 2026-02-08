@@ -146,7 +146,7 @@
       about_owner_sub: "The leadership behind Yalla-Dasi Ads.",
       about_owner_name: "Shriniwas Vishwanath Yalla & Nagnath Sidram Dasi",
       about_owner_role: "Founders",
-      about_owner_bio: "Over 10+ years of experience in outdoor advertising, flex, and signage. Our family has 30+ years of hand-painting heritage, and we now continue with modern flex and digital printing services."
+      about_owner_bio: "Over 10+ years of experience in outdoor advertising, flex, and signage. Our family has 30+ years of hand-painting heritage, and we continue with modern flex and digital printing services along with hand painting."
     },
     hi: {
       nav_home: "होम",
@@ -294,7 +294,7 @@
       about_owner_sub: "Yalla-Dasi Ads के पीछे नेतृत्व।",
       about_owner_name: "Shriniwas Vishwanath Yalla & Nagnath Sidram Dasi",
       about_owner_role: "संस्थापक",
-      about_owner_bio: "आउटडोर विज्ञापन, फ्लेक्स और साइनएज में 10+ वर्षों का अनुभव। हमारे परिवार की 30+ वर्षों की हैंड-पेंटिंग परंपरा रही है, और अब हम आधुनिक फ्लेक्स व डिजिटल प्रिंटिंग सेवाएँ जारी रखते हैं।"
+      about_owner_bio: "आउटडोर विज्ञापन, फ्लेक्स और साइनएज में 10+ वर्षों का अनुभव। हमारे परिवार की 30+ वर्षों की हैंड-पेंटिंग परंपरा रही है, और हम आधुनिक फ्लेक्स व डिजिटल प्रिंटिंग सेवाओं के साथ हैंड पेंटिंग भी जारी रखते हैं।"
     },
     mr: {
       nav_home: "मुख्य",
@@ -442,7 +442,7 @@
       about_owner_sub: "Yalla-Dasi Ads मागील नेतृत्व.",
       about_owner_name: "Shriniwas Vishwanath Yalla & Nagnath Sidram Dasi",
       about_owner_role: "संस्थापक",
-      about_owner_bio: "आउटडोअर जाहिरात, फ्लेक्स आणि साइनएजमध्ये 10+ वर्षांचा अनुभव. आमच्या कुटुंबाची 30+ वर्षांची हँड-पेंटिंग परंपरा आहे, आणि आता आम्ही आधुनिक फ्लेक्स व डिजिटल प्रिंटिंग सेवा सुरू ठेवतो."
+      about_owner_bio: "आउटडोअर जाहिरात, फ्लेक्स आणि साइनएजमध्ये 10+ वर्षांचा अनुभव. आमच्या कुटुंबाची 30+ वर्षांची हँड-पेंटिंग परंपरा आहे, आणि आम्ही आधुनिक फ्लेक्स व डिजिटल प्रिंटिंग सेवांसोबत हँड पेंटिंगही सुरू ठेवतो."
     },
     te: {
       nav_home: "హోమ్",
@@ -590,7 +590,7 @@
       about_owner_sub: "Yalla-Dasi Ads వెనుక నాయకత్వం.",
       about_owner_name: "Shriniwas Vishwanath Yalla & Nagnath Sidram Dasi",
       about_owner_role: "స్థాపకులు",
-      about_owner_bio: "బాహ్య ప్రకటనలు, ఫ్లెక్స్, సైనేజ్‌లో 10+ సంవత్సరాల అనుభవం. మా కుటుంబానికి 30+ సంవత్సరాల హ్యాండ్ పెయింటింగ్ వారసత్వం ఉంది, ఇప్పుడు మేము ఆధునిక ఫ్లెక్స్ మరియు డిజిటల్ ప్రింటింగ్ సేవలను కొనసాగిస్తున్నాము."
+      about_owner_bio: "బాహ్య ప్రకటనలు, ఫ్లెక్స్, సైనేజ్‌లో 10+ సంవత్సరాల అనుభవం. మా కుటుంబానికి 30+ సంవత్సరాల హ్యాండ్ పెయింటింగ్ వారసత్వం ఉంది, మరియు మేము ఆధునిక ఫ్లెక్స్, డిజిటల్ ప్రింటింగ్ సేవలతో పాటు హ్యాండ్ పెయింటింగ్ కూడా కొనసాగిస్తున్నాము."
     }
   };
 
