@@ -49,6 +49,14 @@ html[data-theme="dark"]{
 }
 .html[data-theme="dark"] a{color:var(--text)}
 html[data-theme="dark"] .navlink{color:var(--text)}
+html[data-theme="dark"] .nav-toggle span,
+html[data-theme="dark"] .nav-toggle span::before,
+html[data-theme="dark"] .nav-toggle span::after{
+  background:#f5f7fb;
+}
+html[data-theme="dark"] .brand-sub{color:var(--muted)}
+html[data-theme="dark"] .header-social .social-icon svg{fill:#f5f7fb}
+html[data-theme="dark"] .announce-bar{background:linear-gradient(90deg, #111827 0%, #1f2937 100%)}
 html[data-theme="dark"] .card,
 html[data-theme="dark"] .service,
 html[data-theme="dark"] .testimonial-card,
