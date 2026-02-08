@@ -374,30 +374,6 @@
 
     <section class="section">
       <div class="section-head">
-        <h2>Project Gallery</h2>
-        <p>Filter by service to view related work.</p>
-      </div>
-      <div class="filter-bar">
-        <button class="filter-btn active" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="flex">Flex</button>
-        <button class="filter-btn" data-filter="vinyl">Vinyl</button>
-        <button class="filter-btn" data-filter="hoarding">Hoarding</button>
-        <button class="filter-btn" data-filter="painting">Painting</button>
-      </div>
-      <div class="filter-grid" id="filter-grid">
-        <div class="filter-item" data-cat="flex"><img src="images/dummy/slide-2.svg" alt="Flex work"></div>
-        <div class="filter-item" data-cat="vinyl"><img src="images/dummy/slide-3.svg" alt="Vinyl work"></div>
-        <div class="filter-item" data-cat="hoarding"><img src="images/dummy/slide-1.svg" alt="Hoarding work"></div>
-        <div class="filter-item" data-cat="painting"><img src="images/dummy/slide-7.svg" alt="Painting work"></div>
-        <div class="filter-item" data-cat="flex"><img src="images/dummy/slide-5.svg" alt="Flex banner"></div>
-        <div class="filter-item" data-cat="vinyl"><img src="images/dummy/slide-6.svg" alt="Vinyl banner"></div>
-        <div class="filter-item" data-cat="hoarding"><img src="images/dummy/slide-8.svg" alt="Outdoor hoarding"></div>
-        <div class="filter-item" data-cat="painting"><img src="images/dummy/slide-4.svg" alt="Painting work"></div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="section-head">
         <h2>Videos</h2>
         <p>Showcase videos and client highlights (replace with your YouTube links).</p>
       </div>
@@ -569,19 +545,6 @@
         slides[i].classList.add('active');
         if (dots[i]) dots[i].classList.add('active');
       }, interval);
-    });
-
-    // filter gallery
-    document.querySelectorAll('.filter-btn').forEach(btn=>{
-      btn.addEventListener('click', ()=>{
-        document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
-        btn.classList.add('active');
-        const filter = btn.dataset.filter;
-        document.querySelectorAll('.filter-item').forEach(item=>{
-          const cat = item.dataset.cat;
-          item.style.display = (filter === 'all' || cat === filter) ? 'block' : 'none';
-        });
-      });
     });
 
     // Before/After slider
