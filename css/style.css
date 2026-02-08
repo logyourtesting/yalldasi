@@ -800,10 +800,10 @@ footer{
   box-shadow:0 4px 12px rgba(0,0,0,0.2);
   z-index:999999;
 }
-.whatsapp-float .wa-text{
-  color:#fff;
-  font-weight:700;
-  letter-spacing:1px;
+.whatsapp-float svg{
+  width:28px;
+  height:28px;
+  fill:#fff;
 }
 .call-float{
   position:fixed;
