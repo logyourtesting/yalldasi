@@ -273,6 +273,28 @@ Message: ${d.message}`;
       });
     }
 
+    // auto sliders
+    document.querySelectorAll('.auto-slider').forEach(slider=>{
+      const slides = Array.from(slider.querySelectorAll('.auto-slide'));
+      const dotsWrap = slider.querySelector('.slider-dots');
+      const interval = Number(slider.dataset.interval || 3200);
+      if (!slides.length) return;
+      if (dotsWrap) {
+        dotsWrap.innerHTML = slides.map(()=>'<span class="slider-dot"></span>').join('');
+      }
+      const dots = dotsWrap ? Array.from(dotsWrap.querySelectorAll('.slider-dot')) : [];
+      let i = 0;
+      slides[i].classList.add('active');
+      if (dots[i]) dots[i].classList.add('active');
+      setInterval(()=>{
+        slides[i].classList.remove('active');
+        if (dots[i]) dots[i].classList.remove('active');
+        i = (i + 1) % slides.length;
+        slides[i].classList.add('active');
+        if (dots[i]) dots[i].classList.add('active');
+      }, interval);
+    });
+
     const themeToggle = document.getElementById('theme-toggle');
     const setTheme = (mode) => {
       document.documentElement.setAttribute('data-theme', mode);
