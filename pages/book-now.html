@@ -243,7 +243,7 @@ Date: ${d.date}
 Time: ${d.time}
 Location: ${d.location}
 Message: ${d.message}`;
-        window.open(`https://wa.me/${waNumber}?text=${encodeURIComponent(msg)}`, '_blank');
+        window.location.href = `https://wa.me/${waNumber}?text=${encodeURIComponent(msg)}`;
         saveToSheet(d);
       });
 
