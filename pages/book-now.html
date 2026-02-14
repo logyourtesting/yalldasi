@@ -213,21 +213,45 @@ If you have artwork/photos, please attach them here in WhatsApp.`
       }
     };
 
+    const getBookingData = () => ({
+      name: bookingForm.name.value.trim(),
+      phone: bookingForm.phone.value.trim(),
+      email: bookingForm.email.value.trim(),
+      service: bookingForm.service.value,
+      date: bookingForm.date.value,
+      time: bookingForm.time.value,
+      location: bookingForm.location.value.trim(),
+      message: bookingForm.message.value.trim()
+    });
+
+    function sendBookingWhatsApp(){
+      const d = getBookingData();
+      if (!d.name || !d.phone) {
+        if (bookingStatus) bookingStatus.textContent = 'Name and phone required.';
+        return;
+      }
+      const msg =
+`Booking Request\nName: ${d.name}\nPhone: ${d.phone}\nEmail: ${d.email}\nService: ${d.service}\nDate: ${d.date}\nTime: ${d.time}\nLocation: ${d.location}\nMessage: ${d.message}`;
+      window.location.href = `https://wa.me/${waNumber}?text=${encodeURIComponent(msg)}`;
+      saveToSheet(d);
+    }
+
+    function sendBookingEmail(){
+      const d = getBookingData();
+      if (!d.name || !d.phone) {
+        if (bookingStatus) bookingStatus.textContent = 'Name and phone required.';
+        return;
+      }
+      const body =
+`Booking Request\nName: ${d.name}\nPhone: ${d.phone}\nEmail: ${d.email}\nService: ${d.service}\nDate: ${d.date}\nTime: ${d.time}\nLocation: ${d.location}\nMessage: ${d.message}`;
+      window.location.href = `mailto:yalla.dasi.artist@gmail.com?subject=${encodeURIComponent('Booking Request')}&body=${encodeURIComponent(body)}`;
+      saveToSheet(d);
+    }
+
     if (bookingForm) {
 
-      const getData = () => ({
-        name: bookingForm.name.value.trim(),
-        phone: bookingForm.phone.value.trim(),
-        email: bookingForm.email.value.trim(),
-        service: bookingForm.service.value,
-        date: bookingForm.date.value,
-        time: bookingForm.time.value,
-        location: bookingForm.location.value.trim(),
-        message: bookingForm.message.value.trim()
-      });
-
       bookingForm.querySelector('.booking-wa').addEventListener('click', () => {
-        const d = getData();
+        const d = getBookingData();
         if (!d.name || !d.phone) {
           bookingStatus.textContent = 'Name and phone required.';
           return;
@@ -247,7 +271,7 @@ Message: ${d.message}`;
       });
 
       bookingForm.querySelector('.booking-email').addEventListener('click', () => {
-        const d = getData();
+        const d = getBookingData();
         if (!d.name || !d.phone) {
           bookingStatus.textContent = 'Name and phone required.';
           return;
