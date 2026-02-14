@@ -199,22 +199,21 @@ If you have artwork/photos, please attach them here in WhatsApp.`
     const bookingForm = document.getElementById('booking-form');
     const bookingStatus = document.getElementById('booking-status');
     const sheetUrl = 'https://script.google.com/macros/s/AKfycbxDxUBU3GAii7w29j-dwuJ76bWipLLaTZhGtWUAJxQ0Wayco-Pw6ngFHRV-2mFKAuMq/exec';
+    const saveToSheet = async (payload) => {
+      if (!sheetUrl) return;
+      try {
+        await fetch(sheetUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        if (bookingStatus) bookingStatus.textContent = 'Booking saved.';
+      } catch (err) {
+        if (bookingStatus) bookingStatus.textContent = 'Sheet save failed.';
+      }
+    };
 
     if (bookingForm) {
-
-      const saveToSheet = async (payload) => {
-        if (!sheetUrl) return;
-        try {
-          await fetch(sheetUrl, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(payload)
-          });
-          bookingStatus.textContent = 'Booking saved.';
-        } catch (err) {
-          bookingStatus.textContent = 'Sheet save failed.';
-        }
-      };
 
       const getData = () => ({
         name: bookingForm.name.value.trim(),
