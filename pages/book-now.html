@@ -135,11 +135,10 @@
         <div class="full form-actions">
           <button type="button" class="btn primary booking-wa">Send on WhatsApp</button>
           <button type="button" class="btn secondary booking-email">Send by Email</button>
-          <button type="submit" class="btn light booking-sheet">Save to Sheet</button>
           <span class="meta" id="booking-status"></span>
         </div>
       </form>
-      <p class="meta" style="margin-top:10px">Note: For Google Sheet saving, you will add your Apps Script URL in the code.</p>
+      <p class="meta" style="margin-top:10px">Note: Booking will also be saved to Google Sheet when you click WhatsApp or Email (after you add the Apps Script URL).</p>
     </section>
 
     <footer>
@@ -199,9 +198,24 @@ If you have artwork/photos, please attach them here in WhatsApp.`
 
     const bookingForm = document.getElementById('booking-form');
     const bookingStatus = document.getElementById('booking-status');
-    const sheetUrl = '';
+    const sheetUrl = 'https://script.google.com/macros/s/AKfycbxDxUBU3GAii7w29j-dwuJ76bWipLLaTZhGtWUAJxQ0Wayco-Pw6ngFHRV-2mFKAuMq/exec';
 
     if (bookingForm) {
+
+      const saveToSheet = async (payload) => {
+        if (!sheetUrl) return;
+        try {
+          await fetch(sheetUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          });
+          bookingStatus.textContent = 'Booking saved.';
+        } catch (err) {
+          bookingStatus.textContent = 'Sheet save failed.';
+        }
+      };
+
       const getData = () => ({
         name: bookingForm.name.value.trim(),
         phone: bookingForm.phone.value.trim(),
@@ -230,6 +244,7 @@ Time: ${d.time}
 Location: ${d.location}
 Message: ${d.message}`;
         window.open(`https://wa.me/${waNumber}?text=${encodeURIComponent(msg)}`, '_blank');
+        saveToSheet(d);
       });
 
       bookingForm.querySelector('.booking-email').addEventListener('click', () => {
@@ -249,21 +264,8 @@ Time: ${d.time}
 Location: ${d.location}
 Message: ${d.message}`;
         window.location.href = `mailto:yalla.dasi.artist@gmail.com?subject=${encodeURIComponent('Booking Request')}&body=${encodeURIComponent(body)}`;
+        saveToSheet(d);
       });
-
-      bookingForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        if (!sheetUrl) {
-          bookingStatus.textContent = 'Sheet URL not set yet.';
-          return;
-        }
-        const d = getData();
-        try {
-          const res = await fetch(sheetUrl, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(d)
-          });
           if (res.ok) {
             bookingStatus.textContent = 'Saved to Google Sheet.';
             bookingForm.reset();
