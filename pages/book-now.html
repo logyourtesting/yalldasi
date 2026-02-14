@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>FAQ — Yalla-Dasi Ads</title>
+  <title>Book Now — Yalla-Dasi Ads</title>
   <script>(function(){const t=localStorage.getItem("theme");if(t){document.documentElement.setAttribute("data-theme",t);}})();</script>
-  <meta name="description" content="Frequently asked questions about Yalla-Dasi Ads services, timelines, materials, and installations." />
+  <meta name="description" content="Book an advertising service with Yalla-Dasi Ads. Send booking details via WhatsApp, email, and Google Sheets." />
   <link rel="stylesheet" href="../css/style.css">
   <link rel="icon" href="../images/logo.png">
 </head>
@@ -25,7 +25,7 @@
 
     <header>
       <div class="brand slide-left">
-        <div class="logo"><img loading="lazy" decoding="async" src="../images/logo.png" alt="Yalla-Dasi Ads logo"></div>
+        <div class="logo"><img src="../images/logo.png" alt="Yalla-Dasi Ads logo"></div>
         <div>
           <strong class="brand-title">Yalla-Dasi Ads</strong><br>
           <span class="brand-sub">Outdoor Advertising • Flex • Vinyl • Painting</span>
@@ -54,7 +54,6 @@
         <a class="navlink" href="faq.html">FAQ</a>
         <a class="navlink" href="book-now.html">Book Now</a>
         <a class="navlink" href="contact-us.html" data-i18n="nav_contact">Contact</a>
-        <a class="navlink" href="pages/book-now.html">Book Now</a>
         <a class="cta" href="../get-quote.html" data-i18n="nav_get_quote">Get Quote</a>
       </nav>
 
@@ -80,46 +79,67 @@
 
     <section class="hero">
       <div class="hero-left card fade-in">
-        <div class="kicker">FAQ</div>
-        <h1>Frequently Asked Questions</h1>
-        <p class="lead">Save time with quick answers. You can add or edit questions anytime.</p>
+        <div class="kicker">Book Now</div>
+        <h1>Book Your Advertising Service</h1>
+        <p class="lead">Share your requirements and preferred schedule. You will receive confirmation shortly.</p>
       </div>
       <div class="hero-image zoom-in">
-        <img loading="lazy" decoding="async" src="../images/hero.jpg" alt="Frequently asked questions">
+        <img src="../images/animated/flex.svg" alt="Booking service">
       </div>
     </section>
 
     <section class="section">
       <div class="section-head">
-        <h2>General Questions</h2>
-        <p>Common questions about services, timelines, and delivery.</p>
+        <h2>Service Booking Form</h2>
+        <p>We will save your request in Google Sheets and send it via WhatsApp & Email.</p>
       </div>
-      <div class="faq-list">
-        <details class="faq-item" open>
-          <summary>What information do you need to give a quote?</summary>
-          <p>Share size, quantity, location, and preferred material. If you have artwork, attach it on WhatsApp.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Do you provide installation?</summary>
-          <p>Yes. We measure, print, and install with our own team.</p>
-        </details>
-        <details class="faq-item">
-          <summary>How fast can you complete a job?</summary>
-          <p>Most projects are delivered in 24–72 hours after approval.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Can you help with design?</summary>
-          <p>Yes. We can create or refine artwork and share a proof before printing.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Do you still do hand painting?</summary>
-          <p>Yes. Traditional hand painting is still available for select projects.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Where do you operate?</summary>
-          <p>We are based in Solapur and serve nearby cities and highway locations.</p>
-        </details>
-      </div>
+      <form class="service-form booking-form" id="booking-form">
+        <div>
+          <label>Full Name</label>
+          <input type="text" name="name" placeholder="Your name" required>
+        </div>
+        <div>
+          <label>Mobile Number</label>
+          <input type="tel" name="phone" placeholder="+91" required>
+        </div>
+        <div>
+          <label>Email Address</label>
+          <input type="email" name="email" placeholder="you@example.com" required>
+        </div>
+        <div>
+          <label>Service Required</label>
+          <select name="service" required>
+            <option value="Outdoor Advertising & Hoardings">Outdoor Advertising & Hoardings</option>
+            <option value="Flex & Vinyl Printing">Flex & Vinyl Printing</option>
+            <option value="Wall & Signboard Painting">Wall & Signboard Painting</option>
+            <option value="Hoarding Fabrication & Installation">Hoarding Fabrication & Installation</option>
+            <option value="Shop Branding & Visual Displays">Shop Branding & Visual Displays</option>
+          </select>
+        </div>
+        <div>
+          <label>Preferred Date</label>
+          <input type="date" name="date" required>
+        </div>
+        <div>
+          <label>Preferred Time</label>
+          <input type="time" name="time" required>
+        </div>
+        <div>
+          <label>Location</label>
+          <input type="text" name="location" placeholder="Solapur" required>
+        </div>
+        <div class="full">
+          <label>Message</label>
+          <textarea name="message" rows="4" placeholder="Tell us details like size, quantity, and timeline"></textarea>
+        </div>
+        <div class="full form-actions">
+          <button type="button" class="btn primary booking-wa">Send on WhatsApp</button>
+          <button type="button" class="btn secondary booking-email">Send by Email</button>
+          <button type="submit" class="btn light booking-sheet">Save to Sheet</button>
+          <span class="meta" id="booking-status"></span>
+        </div>
+      </form>
+      <p class="meta" style="margin-top:10px">Note: For Google Sheet saving, you will add your Apps Script URL in the code.</p>
     </section>
 
     <footer>
@@ -143,51 +163,12 @@
     </footer>
   </div>
 
-  
-  <div class="wa-widget" id="wa-widget">
-    <button class="wa-widget-toggle" type="button" aria-expanded="false">
-      <span>WhatsApp Live Chat</span>
-      <span class="wa-widget-dot"></span>
-    </button>
-    <div class="wa-widget-body">
-      <div class="wa-widget-title">Yalla-Dasi Ads</div>
-      <div class="wa-widget-text">Online now. Share your requirement and photos.</div>
-      <a class="btn primary wa-cta" href="#" data-service="Live Chat">Chat on WhatsApp</a>
-    </div>
-  </div>
-<a class="whatsapp-float" href="https://wa.me/919595507038" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <a class="whatsapp-float" href="https://wa.me/919595507038" target="_blank" rel="noopener" aria-label="WhatsApp">
     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.56 15.12L2 22l5.05-1.33A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-2.99.79.8-2.92-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.76-6.11c-.26-.13-1.55-.76-1.79-.85-.24-.09-.41-.13-.58.13-.17.26-.67.85-.82 1.02-.15.17-.3.19-.56.06-.26-.13-1.08-.4-2.06-1.28-.76-.68-1.27-1.52-1.42-1.78-.15-.26-.02-.4.11-.53.12-.12.26-.3.39-.45.13-.15.17-.26.26-.43.09-.17.04-.32-.02-.45-.06-.13-.58-1.39-.8-1.9-.21-.5-.42-.43-.58-.44l-.5-.01c-.17 0-.45.06-.68.32-.24.26-.9.88-.9 2.14s.92 2.48 1.05 2.65c.13.17 1.81 2.76 4.39 3.87.61.26 1.09.42 1.47.54.62.2 1.19.17 1.64.1.5-.08 1.55-.63 1.77-1.24.22-.6.22-1.12.15-1.24-.06-.11-.24-.17-.5-.3z"/></svg>
   </a>
   <a class="call-float" href="tel:+919595507038" aria-label="Call us">📞</a>
 
-  <script src="../js/i18n.js">
-    const waWidget = document.getElementById('wa-widget');
-    if (waWidget) {
-      const toggle = waWidget.querySelector('.wa-widget-toggle');
-      toggle.addEventListener('click', () => {
-        const open = waWidget.classList.toggle('open');
-        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-      });
-    }
-
-  
-    // theme toggle
-    const themeToggle = document.getElementById('theme-toggle');
-    const setTheme = (mode) => {
-      document.documentElement.setAttribute('data-theme', mode);
-      localStorage.setItem('theme', mode);
-      if (themeToggle) themeToggle.textContent = mode === 'dark' ? 'Light' : 'Dark';
-    };
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) setTheme(savedTheme);
-    if (themeToggle) {
-      themeToggle.addEventListener('click', () => {
-        const current = document.documentElement.getAttribute('data-theme') || 'light';
-        setTheme(current === 'dark' ? 'light' : 'dark');
-      });
-    }
-
-  </script>
+  <script src="../js/i18n.js"></script>
   <script>
     const navToggle = document.querySelector('.nav-toggle');
     if (navToggle) {
@@ -216,12 +197,84 @@ If you have artwork/photos, please attach them here in WhatsApp.`
       link.setAttribute('href', `https://wa.me/${waNumber}?text=${encodeURIComponent(msg)}`);
     });
 
-    // basic image protection (deterrent only)
-    document.addEventListener('contextmenu', (e)=>{ if (e.target.tagName === 'IMG') e.preventDefault(); });
-    document.querySelectorAll('img').forEach(img=>{
-      img.setAttribute('draggable', 'false');
-      img.addEventListener('dragstart', e=>e.preventDefault());
-    });
+    const bookingForm = document.getElementById('booking-form');
+    const bookingStatus = document.getElementById('booking-status');
+    const sheetUrl = '';
+
+    if (bookingForm) {
+      const getData = () => ({
+        name: bookingForm.name.value.trim(),
+        phone: bookingForm.phone.value.trim(),
+        email: bookingForm.email.value.trim(),
+        service: bookingForm.service.value,
+        date: bookingForm.date.value,
+        time: bookingForm.time.value,
+        location: bookingForm.location.value.trim(),
+        message: bookingForm.message.value.trim()
+      });
+
+      bookingForm.querySelector('.booking-wa').addEventListener('click', () => {
+        const d = getData();
+        if (!d.name || !d.phone) {
+          bookingStatus.textContent = 'Name and phone required.';
+          return;
+        }
+        const msg =
+`Booking Request
+Name: ${d.name}
+Phone: ${d.phone}
+Email: ${d.email}
+Service: ${d.service}
+Date: ${d.date}
+Time: ${d.time}
+Location: ${d.location}
+Message: ${d.message}`;
+        window.open(`https://wa.me/${waNumber}?text=${encodeURIComponent(msg)}`, '_blank');
+      });
+
+      bookingForm.querySelector('.booking-email').addEventListener('click', () => {
+        const d = getData();
+        if (!d.name || !d.phone) {
+          bookingStatus.textContent = 'Name and phone required.';
+          return;
+        }
+        const body =
+`Booking Request
+Name: ${d.name}
+Phone: ${d.phone}
+Email: ${d.email}
+Service: ${d.service}
+Date: ${d.date}
+Time: ${d.time}
+Location: ${d.location}
+Message: ${d.message}`;
+        window.location.href = `mailto:yalla.dasi.artist@gmail.com?subject=${encodeURIComponent('Booking Request')}&body=${encodeURIComponent(body)}`;
+      });
+
+      bookingForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        if (!sheetUrl) {
+          bookingStatus.textContent = 'Sheet URL not set yet.';
+          return;
+        }
+        const d = getData();
+        try {
+          const res = await fetch(sheetUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(d)
+          });
+          if (res.ok) {
+            bookingStatus.textContent = 'Saved to Google Sheet.';
+            bookingForm.reset();
+          } else {
+            bookingStatus.textContent = 'Sheet save failed.';
+          }
+        } catch (err) {
+          bookingStatus.textContent = 'Sheet save failed.';
+        }
+      });
+    }
 
     document.getElementById('yr').innerText = new Date().getFullYear();
     window.addEventListener('scroll', ()=> document.querySelector('header').classList.toggle('scrolled', window.scrollY>20) );
@@ -229,9 +282,31 @@ If you have artwork/photos, please attach them here in WhatsApp.`
       btn.addEventListener('click', e=>{ e.preventDefault(); e.stopPropagation(); btn.parentElement.classList.toggle('open'); });
     });
     document.addEventListener('click', ()=>document.querySelectorAll('.dropdown').forEach(d=>d.classList.remove('open')));
-    const els = document.querySelectorAll('.fade-in, .zoom-in, .slide-left, .slide-right');
-    const obs = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('show'); }), {threshold:0.2});
-    els.forEach(el=>obs.observe(el));
+
+    const waWidget = document.getElementById('wa-widget');
+    if (waWidget) {
+      const toggle = waWidget.querySelector('.wa-widget-toggle');
+      toggle.addEventListener('click', () => {
+        const open = waWidget.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+    }
+
+    // theme toggle
+    const themeToggle = document.getElementById('theme-toggle');
+    const setTheme = (mode) => {
+      document.documentElement.setAttribute('data-theme', mode);
+      localStorage.setItem('theme', mode);
+      if (themeToggle) themeToggle.textContent = mode === 'dark' ? 'Light' : 'Dark';
+    };
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) setTheme(savedTheme);
+    if (themeToggle) {
+      themeToggle.addEventListener('click', () => {
+        const current = document.documentElement.getAttribute('data-theme') || 'light';
+        setTheme(current === 'dark' ? 'light' : 'dark');
+      });
+    }
   </script>
 </body>
 </html>
