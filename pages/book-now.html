@@ -93,7 +93,9 @@
         <h2>Service Booking Form</h2>
         <p>We will save your request in Google Sheets and send it via WhatsApp & Email.</p>
       </div>
-      <form class="service-form booking-form" id="booking-form">
+      <div class="two-col">
+        <div class="card">
+          <form class="service-form booking-form" id="booking-form">
         <div>
           <label>Full Name</label>
           <input type="text" name="name" placeholder="Your name" required>
@@ -138,7 +140,18 @@
           <span class="meta" id="booking-status"></span>
         </div>
       </form>
-      <p class="meta" style="margin-top:10px">Note: Booking will also be saved to Google Sheet when you click WhatsApp or Email (after you add the Apps Script URL).</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-bottom:10px">Recent Work Preview</h3>
+          <div class="auto-slider" data-interval="2800">
+            <div class="auto-slide"><img src="../images/animated/book-1.svg" alt="Outdoor advertising preview"></div>
+            <div class="auto-slide"><img src="../images/animated/book-2.svg" alt="Flex and vinyl printing preview"></div>
+            <div class="auto-slide"><img src="../images/animated/book-3.svg" alt="Wall and signboard painting preview"></div>
+            <div class="slider-dots"></div>
+          </div>
+        </div>
+      </div>
+      <p class="meta" style="margin-top:10px">Note: Booking will also be saved to Google Sheet when you click WhatsApp or Email.</p>
     </section>
 
     <footer>
