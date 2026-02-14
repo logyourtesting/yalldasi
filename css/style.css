@@ -589,6 +589,7 @@ nav{display:flex;gap:8px;align-items:center;flex-wrap:nowrap;justify-content:fle
 
 /* SECTIONS */
 .section{margin-top:40px}
+.compact-top{margin-top:16px}
 .section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;margin-bottom:18px}
 .section-head h2{font-size:28px}
 .section-head p{color:var(--muted)}
