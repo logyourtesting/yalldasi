@@ -178,27 +178,11 @@
       });
     }
 
-    // WhatsApp CTA prefill
     const waNumber = '919595507038';
-    const pageTitle = document.title.replace('— Yalla-Dasi Ads','').trim();
-    const waDefaultMessage = `Hello Yalla-Dasi Ads,
-I'm interested in ${pageTitle || 'your services'}.
-Please share details and pricing.
-If you have artwork/photos, please attach them here in WhatsApp.`;
-    document.querySelectorAll('.whatsapp-float, .wa-cta').forEach(link=>{
-      const service = link.dataset.service ? ` ${link.dataset.service}` : '';
-      const msg = link.dataset.service
-        ? `Hello Yalla-Dasi Ads,
-I'm interested in${service}.
-Please share details and pricing.
-If you have artwork/photos, please attach them here in WhatsApp.`
-        : waDefaultMessage;
-      link.setAttribute('href', `https://wa.me/${waNumber}?text=${encodeURIComponent(msg)}`);
-    });
-
     const bookingForm = document.getElementById('booking-form');
     const bookingStatus = document.getElementById('booking-status');
     const sheetUrl = 'https://script.google.com/macros/s/AKfycbxDxUBU3GAii7w29j-dwuJ76bWipLLaTZhGtWUAJxQ0Wayco-Pw6ngFHRV-2mFKAuMq/exec';
+
     const saveToSheet = async (payload) => {
       if (!sheetUrl) return;
       try {
@@ -231,7 +215,15 @@ If you have artwork/photos, please attach them here in WhatsApp.`
         return;
       }
       const msg =
-`Booking Request\nName: ${d.name}\nPhone: ${d.phone}\nEmail: ${d.email}\nService: ${d.service}\nDate: ${d.date}\nTime: ${d.time}\nLocation: ${d.location}\nMessage: ${d.message}`;
+`Booking Request
+Name: ${d.name}
+Phone: ${d.phone}
+Email: ${d.email}
+Service: ${d.service}
+Date: ${d.date}
+Time: ${d.time}
+Location: ${d.location}
+Message: ${d.message}`;
       window.location.href = `https://wa.me/${waNumber}?text=${encodeURIComponent(msg)}`;
       saveToSheet(d);
     }
@@ -243,66 +235,19 @@ If you have artwork/photos, please attach them here in WhatsApp.`
         return;
       }
       const body =
-`Booking Request\nName: ${d.name}\nPhone: ${d.phone}\nEmail: ${d.email}\nService: ${d.service}\nDate: ${d.date}\nTime: ${d.time}\nLocation: ${d.location}\nMessage: ${d.message}`;
+`Booking Request
+Name: ${d.name}
+Phone: ${d.phone}
+Email: ${d.email}
+Service: ${d.service}
+Date: ${d.date}
+Time: ${d.time}
+Location: ${d.location}
+Message: ${d.message}`;
       window.location.href = `mailto:yalla.dasi.artist@gmail.com?subject=${encodeURIComponent('Booking Request')}&body=${encodeURIComponent(body)}`;
       saveToSheet(d);
     }
 
-    if (bookingForm) {
-
-      bookingForm.querySelector('.booking-wa').addEventListener('click', () => {
-        const d = getBookingData();
-        if (!d.name || !d.phone) {
-          bookingStatus.textContent = 'Name and phone required.';
-          return;
-        }
-        const msg =
-`Booking Request
-Name: ${d.name}
-Phone: ${d.phone}
-Email: ${d.email}
-Service: ${d.service}
-Date: ${d.date}
-Time: ${d.time}
-Location: ${d.location}
-Message: ${d.message}`;
-        window.location.href = `https://wa.me/${waNumber}?text=${encodeURIComponent(msg)}`;
-        saveToSheet(d);
-      });
-
-      bookingForm.querySelector('.booking-email').addEventListener('click', () => {
-        const d = getBookingData();
-        if (!d.name || !d.phone) {
-          bookingStatus.textContent = 'Name and phone required.';
-          return;
-        }
-        const body =
-`Booking Request
-Name: ${d.name}
-Phone: ${d.phone}
-Email: ${d.email}
-Service: ${d.service}
-Date: ${d.date}
-Time: ${d.time}
-Location: ${d.location}
-Message: ${d.message}`;
-        window.location.href = `mailto:yalla.dasi.artist@gmail.com?subject=${encodeURIComponent('Booking Request')}&body=${encodeURIComponent(body)}`;
-        saveToSheet(d);
-      });
-          if (res.ok) {
-            bookingStatus.textContent = 'Saved to Google Sheet.';
-            bookingForm.reset();
-          } else {
-            bookingStatus.textContent = 'Sheet save failed.';
-          }
-        } catch (err) {
-          bookingStatus.textContent = 'Sheet save failed.';
-        }
-      });
-    }
-
-    document.getElementById('yr').innerText = new Date().getFullYear();
-    window.addEventListener('scroll', ()=> document.querySelector('header').classList.toggle('scrolled', window.scrollY>20) );
     document.querySelectorAll('.dropdown-toggle').forEach(btn=>{
       btn.addEventListener('click', e=>{ e.preventDefault(); e.stopPropagation(); btn.parentElement.classList.toggle('open'); });
     });
@@ -317,7 +262,6 @@ Message: ${d.message}`;
       });
     }
 
-    // theme toggle
     const themeToggle = document.getElementById('theme-toggle');
     const setTheme = (mode) => {
       document.documentElement.setAttribute('data-theme', mode);
@@ -332,6 +276,9 @@ Message: ${d.message}`;
         setTheme(current === 'dark' ? 'light' : 'dark');
       });
     }
+
+    const yr = document.getElementById('yr');
+    if (yr) yr.innerText = new Date().getFullYear();
   </script>
 </body>
 </html>
