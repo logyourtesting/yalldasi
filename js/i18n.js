@@ -606,7 +606,31 @@
     });
   }
 
+  function ensureAnnouncementBar() {
+    if (document.querySelector('.announce-bar')) return;
+
+    const container = document.querySelector('.container');
+    const topBar = document.querySelector('.top-bar');
+    if (!container || !topBar) return;
+
+    const inPagesDir = window.location.pathname.includes('/pages/');
+    const quoteHref = inPagesDir ? '../get-quote.html' : 'get-quote.html';
+
+    const bar = document.createElement('div');
+    bar.className = 'announce-bar';
+    bar.innerHTML = `
+      <div>
+        <strong data-i18n="announce_title">New: LED Sign Boards + Outdoor Advertising</strong>
+        <p data-i18n="announce_text">Now available for shops, events, and highway campaigns. Call +91 9595507038 for a site visit.</p>
+      </div>
+      <a class="btn" href="${quoteHref}" data-i18n="nav_get_quote">Get a Free Quote</a>
+    `;
+
+    topBar.insertAdjacentElement('afterend', bar);
+  }
+
   window.addEventListener('DOMContentLoaded', () => {
+    ensureAnnouncementBar();
     const select = document.getElementById('lang-select');
     if (select) {
       select.value = defaultLang;
