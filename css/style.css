@@ -627,6 +627,12 @@ nav{display:flex;gap:8px;align-items:center;flex-wrap:nowrap;justify-content:fle
 }
 .service h4{margin-bottom:8px}
 .service p{color:var(--muted)}
+.service-link-block{
+  display:block;
+}
+.service-link-block:hover h4{
+  color:#7b1f2a;
+}
 
 /* FEATURE BAND */
 .feature-band{
