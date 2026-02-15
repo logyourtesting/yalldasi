@@ -1005,6 +1005,7 @@ footer{
 }
 .footer-label{font-size:12px;text-transform:uppercase;letter-spacing:0.2em;color:#8e94a8;margin-bottom:6px}
 .footer-bottom{margin-top:20px;font-size:13px;color:#868ca1}
+.footer-bottom a{color:inherit;text-decoration:underline;text-underline-offset:2px}
 
 /* ANIMATIONS */
 .fade-in, .zoom-in, .slide-left, .slide-right {
