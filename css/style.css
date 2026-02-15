@@ -594,6 +594,12 @@ nav{display:flex;gap:8px;align-items:center;flex-wrap:nowrap;justify-content:fle
 .section-head h2{font-size:28px}
 .section-head p{color:var(--muted)}
 
+/* Render long pages faster by skipping offscreen section paint until needed */
+.section{
+  content-visibility:auto;
+  contain-intrinsic-size: 1px 600px;
+}
+
 /* TRUST */
 .trust-bar{
   margin-top:26px;
