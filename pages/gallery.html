@@ -151,6 +151,7 @@
   <a class="call-float" href="tel:+919595507038" aria-label="Call us">📞</a>
 
   <script src="../js/i18n.js"></script>
+  <script src="../js/image-protect.js"></script>
   <script>
     const waWidget = document.getElementById('wa-widget');
     if (waWidget) {
@@ -291,18 +292,6 @@ If you have artwork/photos, please attach them here in WhatsApp.`
       if (e.key === 'ArrowLeft') showPrevImage();
       if (e.key === 'ArrowRight') showNextImage();
     });
-
-    // image copyright deterrent (right-click + drag)
-    const copyrightMsg = 'Copyright Notice: This image belongs to Yalla-Dasi Ads. Unauthorized copying or reuse may lead to legal action.';
-    function blockImageCopy(e) {
-      e.preventDefault();
-      alert(copyrightMsg);
-    }
-    document.querySelectorAll('#filter-grid .filter-item img, #lightbox-image').forEach((img) => {
-      img.addEventListener('contextmenu', blockImageCopy);
-      img.addEventListener('dragstart', blockImageCopy);
-    });
-
     document.getElementById('yr').innerText = new Date().getFullYear();
 
     window.addEventListener('scroll', ()=> document.querySelector('header').classList.toggle('scrolled', window.scrollY>20) );

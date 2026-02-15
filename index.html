@@ -536,6 +536,7 @@
   <a class="call-float" href="tel:+919595507038" aria-label="Call us">📞</a>
 
   <script src="js/i18n.js"></script>
+  <script src="js/image-protect.js"></script>
   <script>
     const navToggle = document.querySelector('.nav-toggle');
     if (navToggle) {
@@ -545,13 +546,6 @@
         navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
       });
     }
-
-    // basic image protection (deterrent only)
-    document.addEventListener('contextmenu', (e)=>{ if (e.target.tagName === 'IMG') e.preventDefault(); });
-    document.querySelectorAll('img').forEach(img=>{
-      img.setAttribute('draggable', 'false');
-      img.addEventListener('dragstart', e=>e.preventDefault());
-    });
 
     // WhatsApp CTA prefill
     const waNumber = '919595507038';
