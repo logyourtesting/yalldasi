@@ -105,6 +105,8 @@
     </section>
 
     <div class="lightbox" id="gallery-lightbox" aria-hidden="true">
+      <button class="lightbox-nav prev" type="button" id="lightbox-prev" aria-label="Previous image">‹</button>
+      <button class="lightbox-nav next" type="button" id="lightbox-next" aria-label="Next image">›</button>
       <button class="lightbox-close" type="button" id="lightbox-close" aria-label="Close image">×</button>
       <div class="lightbox-loader" id="lightbox-loader" aria-hidden="true"></div>
       <img id="lightbox-image" alt="Expanded gallery image">
@@ -218,7 +220,48 @@ If you have artwork/photos, please attach them here in WhatsApp.`
     const lightbox = document.getElementById('gallery-lightbox');
     const lightboxImage = document.getElementById('lightbox-image');
     const lightboxClose = document.getElementById('lightbox-close');
-    const lightboxLoader = document.getElementById('lightbox-loader');
+    const lightboxPrev = document.getElementById('lightbox-prev');
+    const lightboxNext = document.getElementById('lightbox-next');
+    const galleryImages = Array.from(document.querySelectorAll('#filter-grid .filter-item img'));
+    let currentImages = galleryImages;
+    let currentIndex = 0;
+
+    function getVisibleImages() {
+      return galleryImages.filter((img) => img.closest('.filter-item').style.display !== 'none');
+    }
+
+    function openImageByIndex(index) {
+      currentImages = getVisibleImages();
+      if (!currentImages.length) return;
+
+      currentIndex = (index + currentImages.length) % currentImages.length;
+      const selected = currentImages[currentIndex];
+
+      lightbox.classList.add('open');
+      lightbox.classList.add('loading');
+      lightbox.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+
+      const preloader = new Image();
+      preloader.onload = () => {
+        lightboxImage.src = selected.src;
+        lightboxImage.alt = selected.alt || 'Expanded gallery image';
+        lightbox.classList.remove('loading');
+      };
+      preloader.onerror = () => {
+        lightbox.classList.remove('loading');
+        alert('Image failed to load. Please try again.');
+      };
+      preloader.src = selected.src;
+    }
+
+    function showPrevImage() {
+      openImageByIndex(currentIndex - 1);
+    }
+
+    function showNextImage() {
+      openImageByIndex(currentIndex + 1);
+    }
 
     function closeLightbox() {
       lightbox.classList.remove('open');
@@ -228,34 +271,25 @@ If you have artwork/photos, please attach them here in WhatsApp.`
       lightboxImage.removeAttribute('src');
     }
 
-    document.querySelectorAll('#filter-grid .filter-item img').forEach((img) => {
+    galleryImages.forEach((img) => {
       img.style.cursor = 'zoom-in';
       img.addEventListener('click', () => {
-        lightbox.classList.add('open');
-        lightbox.classList.add('loading');
-        lightbox.setAttribute('aria-hidden', 'false');
-        document.body.style.overflow = 'hidden';
-
-        const preloader = new Image();
-        preloader.onload = () => {
-          lightboxImage.src = img.src;
-          lightboxImage.alt = img.alt || 'Expanded gallery image';
-          lightbox.classList.remove('loading');
-        };
-        preloader.onerror = () => {
-          lightbox.classList.remove('loading');
-          alert('Image failed to load. Please try again.');
-        };
-        preloader.src = img.src;
+        const visible = getVisibleImages();
+        openImageByIndex(visible.indexOf(img));
       });
     });
 
     lightboxClose.addEventListener('click', closeLightbox);
+    lightboxPrev.addEventListener('click', showPrevImage);
+    lightboxNext.addEventListener('click', showNextImage);
     lightbox.addEventListener('click', (e) => {
       if (e.target === lightbox) closeLightbox();
     });
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && lightbox.classList.contains('open')) closeLightbox();
+      if (!lightbox.classList.contains('open')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') showPrevImage();
+      if (e.key === 'ArrowRight') showNextImage();
     });
 
     // image copyright deterrent (right-click + drag)
