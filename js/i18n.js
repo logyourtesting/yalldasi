@@ -629,7 +629,52 @@
     topBar.insertAdjacentElement('afterend', bar);
   }
 
+  function hydratePlaceholderLinks() {
+    const inPagesDir = window.location.pathname.includes('/pages/');
+    const galleryHref = inPagesDir ? 'gallery.html' : 'pages/gallery.html';
+    const contactHref = inPagesDir ? 'contact-us.html' : 'pages/contact-us.html';
+
+    // Replace dead social links with working destinations.
+    const socialMap = {
+      facebook: 'https://www.facebook.com/',
+      instagram: 'https://www.instagram.com/',
+      youtube: 'https://www.youtube.com/'
+    };
+    document.querySelectorAll('.social-icon[href="#"]').forEach((a) => {
+      const label = (a.getAttribute('aria-label') || '').toLowerCase();
+      if (label.includes('facebook')) a.href = socialMap.facebook;
+      else if (label.includes('instagram')) a.href = socialMap.instagram;
+      else if (label.includes('youtube')) a.href = socialMap.youtube;
+      if (a.href !== '#') {
+        a.target = '_blank';
+        a.rel = 'noopener noreferrer';
+      }
+    });
+
+    // Home video cards currently have placeholders; route to project gallery.
+    document.querySelectorAll('.video-thumb[href="#"]').forEach((a) => {
+      a.href = galleryHref;
+      a.removeAttribute('target');
+      a.removeAttribute('rel');
+    });
+
+    // Replace placeholder reviews button with a working link.
+    document.querySelectorAll('.btn.secondary[aria-disabled="true"][href="#"]').forEach((a) => {
+      a.href = 'https://www.google.com/search?q=Yalla-Dasi+Ads+Solapur+reviews';
+      a.target = '_blank';
+      a.rel = 'noopener noreferrer';
+      a.removeAttribute('aria-disabled');
+      a.textContent = 'Google Reviews';
+    });
+
+    // Safety fallback: route any remaining non-WA placeholder links to contact page.
+    document.querySelectorAll('a[href="#"]:not(.wa-cta):not(.social-icon):not(.dropdown-toggle)').forEach((a) => {
+      a.href = contactHref;
+    });
+  }
+
   window.addEventListener('DOMContentLoaded', () => {
+    hydratePlaceholderLinks();
     ensureAnnouncementBar();
     const select = document.getElementById('lang-select');
     if (select) {
