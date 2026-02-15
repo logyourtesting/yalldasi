@@ -211,12 +211,22 @@
 
     function sendBookingWhatsApp(){
       const d = getBookingData();
+      const lang = localStorage.getItem('site_lang') || 'en';
       if (!d.name || !d.phone) {
         if (bookingStatus) bookingStatus.textContent = 'Name and phone required.';
         return;
       }
-      const msg =
-`Booking Request
+      const msg = lang === 'mr'
+? `बुकिंग विनंती
+नाव: ${d.name}
+फोन: ${d.phone}
+ईमेल: ${d.email}
+सेवा: ${d.service}
+दिनांक: ${d.date}
+वेळ: ${d.time}
+ठिकाण: ${d.location}
+संदेश: ${d.message}`
+: `Booking Request
 Name: ${d.name}
 Phone: ${d.phone}
 Email: ${d.email}
@@ -231,12 +241,22 @@ Message: ${d.message}`;
 
     function sendBookingEmail(){
       const d = getBookingData();
+      const lang = localStorage.getItem('site_lang') || 'en';
       if (!d.name || !d.phone) {
         if (bookingStatus) bookingStatus.textContent = 'Name and phone required.';
         return;
       }
-      const body =
-`Booking Request
+      const body = lang === 'mr'
+? `बुकिंग विनंती
+नाव: ${d.name}
+फोन: ${d.phone}
+ईमेल: ${d.email}
+सेवा: ${d.service}
+दिनांक: ${d.date}
+वेळ: ${d.time}
+ठिकाण: ${d.location}
+संदेश: ${d.message}`
+: `Booking Request
 Name: ${d.name}
 Phone: ${d.phone}
 Email: ${d.email}
@@ -245,7 +265,8 @@ Date: ${d.date}
 Time: ${d.time}
 Location: ${d.location}
 Message: ${d.message}`;
-      window.location.href = `mailto:yalla.dasi.artist@gmail.com?subject=${encodeURIComponent('Booking Request')}&body=${encodeURIComponent(body)}`;
+      const subject = lang === 'mr' ? 'बुकिंग विनंती' : 'Booking Request';
+      window.location.href = `mailto:yalla.dasi.artist@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
       saveToSheet(d);
     }
 

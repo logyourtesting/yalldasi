@@ -606,6 +606,38 @@
     });
   }
 
+  function preferredLang() {
+    return localStorage.getItem('site_lang') || 'en';
+  }
+
+  function buildWaMessage(serviceOrEmpty, pageTitle) {
+    const lang = preferredLang();
+    const service = (serviceOrEmpty || '').trim();
+    const title = (pageTitle || 'your services').trim();
+
+    if (lang === 'mr') {
+      if (service) {
+        return `नमस्कार Yalla-Dasi Ads,\nमला ${service} बद्दल माहिती हवी आहे.\nकृपया तपशील आणि किंमत पाठवा.\nआर्टवर्क/फोटो असल्यास व्हॉट्सअॅपवर पाठवा.`;
+      }
+      return `नमस्कार Yalla-Dasi Ads,\nमला ${title} बद्दल माहिती हवी आहे.\nकृपया तपशील आणि किंमत पाठवा.\nआर्टवर्क/फोटो असल्यास व्हॉट्सअॅपवर पाठवा.`;
+    }
+
+    if (service) {
+      return `Hello Yalla-Dasi Ads,\nI'm interested in ${service}.\nPlease share details and pricing.\nIf you have artwork/photos, please attach them here in WhatsApp.`;
+    }
+    return `Hello Yalla-Dasi Ads,\nI'm interested in ${title}.\nPlease share details and pricing.\nIf you have artwork/photos, please attach them here in WhatsApp.`;
+  }
+
+  function applyWaTemplates() {
+    const waNumber = '919595507038';
+    const pageTitle = (document.title || '').replace('— Yalla-Dasi Ads', '').trim() || 'your services';
+    document.querySelectorAll('.whatsapp-float, .wa-cta').forEach((link) => {
+      const service = link.dataset.service || '';
+      const msg = buildWaMessage(service, pageTitle);
+      link.setAttribute('href', `https://wa.me/${waNumber}?text=${encodeURIComponent(msg)}`);
+    });
+  }
+
   function ensureAnnouncementBar() {
     if (document.querySelector('.announce-bar')) return;
 
@@ -683,8 +715,10 @@
         const lang = select.value;
         localStorage.setItem('site_lang', lang);
         applyLang(lang);
+        applyWaTemplates();
       });
     }
     applyLang(defaultLang);
+    applyWaTemplates();
   });
 })();

@@ -294,14 +294,16 @@ If you have artwork/photos, please attach them here in WhatsApp.`
     document.getElementById('send-whatsapp').addEventListener('click', () => {
       const d = formData();
       const status = document.getElementById('quote-status');
+      const lang = localStorage.getItem('site_lang') || 'en';
 
       if (!d.name || !d.phone) {
         status.textContent = "Name & Phone required.";
         return;
       }
 
-      const msg =
-`Quote Request\nName: ${d.name}\nPhone: ${d.phone}\nEmail: ${d.email}\nService: ${d.service}\nSize: ${d.size}\nMaterial: ${d.material}\nQuantity: ${d.quantity}\nLocation: ${d.location}\nNotes: ${d.notes}`;
+      const msg = lang === 'mr'
+? `कोटेशन विनंती\nनाव: ${d.name}\nफोन: ${d.phone}\nईमेल: ${d.email}\nसेवा: ${d.service}\nआकार: ${d.size}\nसाहित्य: ${d.material}\nप्रमाण: ${d.quantity}\nठिकाण: ${d.location}\nटीप: ${d.notes}`
+: `Quote Request\nName: ${d.name}\nPhone: ${d.phone}\nEmail: ${d.email}\nService: ${d.service}\nSize: ${d.size}\nMaterial: ${d.material}\nQuantity: ${d.quantity}\nLocation: ${d.location}\nNotes: ${d.notes}`;
 
       const url = `https://wa.me/919595507038?text=${encodeURIComponent(msg)}`;
       window.open(url, "_blank");
@@ -311,11 +313,14 @@ If you have artwork/photos, please attach them here in WhatsApp.`
     document.getElementById('send-email').addEventListener('click', () => {
       const d = formData();
       const status = document.getElementById('quote-status');
+      const lang = localStorage.getItem('site_lang') || 'en';
 
-      const body =
-`Name: ${d.name}\nPhone: ${d.phone}\nEmail: ${d.email}\nService: ${d.service}\nSize: ${d.size}\nMaterial: ${d.material}\nQuantity: ${d.quantity}\nLocation: ${d.location}\n\nNotes:\n${d.notes}`;
+      const body = lang === 'mr'
+? `नाव: ${d.name}\nफोन: ${d.phone}\nईमेल: ${d.email}\nसेवा: ${d.service}\nआकार: ${d.size}\nसाहित्य: ${d.material}\nप्रमाण: ${d.quantity}\nठिकाण: ${d.location}\n\nटीप:\n${d.notes}`
+: `Name: ${d.name}\nPhone: ${d.phone}\nEmail: ${d.email}\nService: ${d.service}\nSize: ${d.size}\nMaterial: ${d.material}\nQuantity: ${d.quantity}\nLocation: ${d.location}\n\nNotes:\n${d.notes}`;
 
-      const mailto = `mailto:yalla.dasi.artist@gmail.com?subject=Quote Request&body=${encodeURIComponent(body)}`;
+      const subject = lang === 'mr' ? 'कोटेशन विनंती' : 'Quote Request';
+      const mailto = `mailto:yalla.dasi.artist@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
       const file = document.getElementById('file-input').files[0];
       if (file) {
