@@ -817,6 +817,29 @@ nav{display:flex;gap:8px;align-items:center;flex-wrap:nowrap;justify-content:fle
   align-items:stretch;
 }
 
+/* PAINTING PAGE SLIDER */
+.painting-slider{
+  height:auto;
+  min-height:0;
+  background:transparent;
+}
+.painting-slider .auto-slide{
+  position:relative;
+  inset:auto;
+  display:none;
+  opacity:1;
+  padding:0;
+}
+.painting-slider .auto-slide.active{display:block}
+.painting-slider img{
+  width:100%;
+  height:auto;
+  min-height:0;
+  object-fit:initial;
+  border-radius:12px;
+  background:transparent;
+}
+
 /* ABOUT + CONTACT */
 .two-col{display:grid;grid-template-columns:1fr 420px;gap:18px}
 .card{padding:18px;background:#fff;border-radius:12px;box-shadow:var(--shadow)}
