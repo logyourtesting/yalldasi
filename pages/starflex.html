@@ -395,7 +395,8 @@
   </a>
   <a class="call-float" href="tel:+919595507038" aria-label="Call us">📞</a>
 
-  <script src="../js/i18n.js">
+  <script src="../js/i18n.js"></script>
+  <script>
     const waWidget = document.getElementById('wa-widget');
     if (waWidget) {
       const toggle = waWidget.querySelector('.wa-widget-toggle');
@@ -466,41 +467,10 @@ Location: ${d.location}
 Size: ${d.size}
 Quantity: ${d.quantity}
 Message: ${d.message}`;
-        window.location.href = `mailto:yalla.dasi.artist@gmail.com?subject=${encodeURIComponent('Pricing Request')} &body=${encodeURIComponent(body)}`;
+        window.location.href = `mailto:yalla.dasi.artist@gmail.com?subject=${encodeURIComponent('Pricing Request')}&body=${encodeURIComponent(body)}`;
       });
     }
 
-      pricingBtn.addEventListener('click', () => {
-        const d = {
-          service: pricingForm.dataset.service || pageTitle,
-          name: pricingForm.name.value.trim(),
-          phone: pricingForm.phone.value.trim(),
-          email: pricingForm.email.value.trim(),
-          location: pricingForm.location.value.trim(),
-          size: pricingForm.size.value.trim(),
-          quantity: pricingForm.quantity.value.trim(),
-          message: pricingForm.message.value.trim()
-        };
-        if (!d.name || !d.phone) {
-          alert('Name and Phone are required.');
-          return;
-        }
-        const msg =
-`Pricing Request
-Service: ${d.service}
-Name: ${d.name}
-Phone: ${d.phone}
-Email: ${d.email}
-Location: ${d.location}
-Size: ${d.size}
-Quantity: ${d.quantity}
-Message: ${d.message}
-Artwork/Photo: Please attach in WhatsApp.`;
-        window.open(`https://wa.me/${waNumber}?text=${encodeURIComponent(msg)}`, '_blank');
-      });
-    }
-
-  
     // theme toggle
     const themeToggle = document.getElementById('theme-toggle');
     const setTheme = (mode) => {
