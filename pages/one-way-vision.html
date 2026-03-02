@@ -12,7 +12,7 @@
     })();
   </script>
 
-  <meta name="description" content="One Way Vision printing for glass, cars, offices, and shopfronts. Perforated vinyl branding that allows visibility from inside and advertising from outside." />
+  <meta name="description" content="One Way Vision printing for shop glass, offices, vehicles and commercial buildings. Perforated vinyl branding with inside visibility and outside advertising impact." />
 
   <!-- Google tag -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-LWPWLLC0E1"></script>
@@ -30,9 +30,13 @@
 <body>
 <div class="container">
 
-<!-- HEADER -->
+<div class="top-bar">
+  <span class="ganpati">ॐ</span>
+  <button id="theme-toggle" class="theme-toggle" type="button">Dark</button>
+</div>
+
 <header>
-  <div class="brand">
+  <div class="brand slide-left">
     <div class="logo">
       <img src="../images/logo.png" alt="Yalla-Dasi Ads logo">
     </div>
@@ -42,22 +46,25 @@
     </div>
   </div>
 
+  <button class="nav-toggle" type="button">Menu</button>
+
   <nav>
     <a href="../index.html">Home</a>
     <a href="flex.html">Flex Printing</a>
     <a href="vinyl.html">Vinyl Printing</a>
-    <a href="starflex.html">Star Flex</a>
+    <a href="starflex.html">Star Flex Hoardings</a>
     <a href="cloth.html">Cloth Banners</a>
     <a href="signs.html">Shop Sign Boards</a>
-    <a href="painting.html">Painting</a>
+    <a href="painting.html">Painting Services</a>
     <a href="outdoor-hoarding.html">Outdoor Hoarding</a>
     <a href="contact-us.html">Contact</a>
+    <a class="cta" href="../get-quote.html">Get Quote</a>
   </nav>
 </header>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-left card">
+  <div class="hero-left card fade-in">
     <div class="kicker">Perforated Glass Branding</div>
     <h1>One Way Vision Printing</h1>
     <p class="lead">
@@ -71,12 +78,12 @@
       <span class="pill">Weather safe</span>
     </div>
   </div>
-  <div class="hero-image">
-    <img src="../images/one-way-vision.jpg" alt="One Way Vision Glass Branding">
+  <div class="hero-image zoom-in">
+    <img src="../images/one-way-vision.png" alt="One Way Vision Glass Branding">
   </div>
 </section>
 
-<!-- WHY SECTION -->
+<!-- WHY -->
 <section class="section">
   <div class="section-head">
     <h2>Why One Way Vision</h2>
@@ -145,73 +152,61 @@
   </div>
 </section>
 
-<!-- PRICING FORM -->
+<!-- PRICING -->
 <section class="section">
   <div class="section-head">
     <h2>Request Pricing</h2>
     <p>Send details and get quote on WhatsApp.</p>
   </div>
 
-  <form class="service-form" id="serviceForm">
-    <input type="text" placeholder="Full Name" required id="name">
-    <input type="tel" placeholder="Mobile Number" required id="phone">
-    <input type="text" placeholder="Glass Size (e.g., 8ft x 4ft)" id="size">
-    <textarea placeholder="Message" id="message"></textarea>
-    <button type="button" class="btn primary" onclick="sendWhatsApp()">Send on WhatsApp</button>
+  <form class="service-form" data-service="One Way Vision">
+    <input type="text" name="name" placeholder="Full Name" required>
+    <input type="tel" name="phone" placeholder="Mobile Number" required>
+    <input type="text" name="size" placeholder="Glass Size (e.g., 8ft x 4ft)">
+    <textarea name="message" placeholder="Message"></textarea>
+    <button type="button" class="btn primary enquiry-wa">
+      Send Enquiry on WhatsApp
+    </button>
   </form>
 </section>
 
-<!-- CTA -->
-<section class="cta-banner">
-  <div>
-    <h2>Need Glass Branding Fast?</h2>
-    <p>Share size and location details. We respond within 24 hours.</p>
-  </div>
-  <a class="btn primary" href="../get-quote.html">Request Quote</a>
-</section>
-
-<!-- FOOTER -->
 <footer>
   <div>
     <strong>Yalla-Dasi Ads</strong><br>
     Outdoor Advertising • Flex • Vinyl • Hoardings • Painting
   </div>
-  <div>
-    Call: +91 9890333466
-  </div>
-  <div>
-    Email: yalla.dasi.artist@gmail.com
-  </div>
-  <div>
-    © <span id="yr"></span> Yalla-Dasi Ads
-  </div>
+  <div>+91 9890333466</div>
+  <div>yalla.dasi.artist@gmail.com</div>
+  <div>© <span id="yr"></span> Yalla-Dasi Ads</div>
 </footer>
 
 </div>
 
 <script>
-  document.getElementById("yr").innerText = new Date().getFullYear();
+document.getElementById("yr").innerText = new Date().getFullYear();
 
-  function sendWhatsApp(){
-    const name=document.getElementById("name").value;
-    const phone=document.getElementById("phone").value;
-    const size=document.getElementById("size").value;
-    const message=document.getElementById("message").value;
-
+const waNumber = '919595507038';
+const form = document.querySelector('.service-form');
+if(form){
+  const btn = form.querySelector('.enquiry-wa');
+  btn.addEventListener('click',()=>{
+    const name=form.name.value.trim();
+    const phone=form.phone.value.trim();
+    const size=form.size.value.trim();
+    const message=form.message.value.trim();
     if(!name || !phone){
       alert("Name and Phone are required.");
       return;
     }
-
     const text =
-`One Way Vision Pricing Request
+`One Way Vision Enquiry
 Name: ${name}
 Phone: ${phone}
 Size: ${size}
 Message: ${message}`;
-
-    window.open(`https://wa.me/919595507038?text=${encodeURIComponent(text)}`,'_blank');
-  }
+    window.open(`https://wa.me/${waNumber}?text=${encodeURIComponent(text)}`,'_blank');
+  });
+}
 </script>
 
 </body>
